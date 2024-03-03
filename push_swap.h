@@ -4,6 +4,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <limits.h>
+# include "libft/libft.h"
 
 typedef struct  s_stack
 {
@@ -16,8 +17,6 @@ typedef struct  s_stack
     struct s_stack  *target;
 }               t_stack;
 
-char    **ft_split(char *s, char sep);
-
-
+void    ini_stack(t_stack **a, char **argv);
 
 #endif

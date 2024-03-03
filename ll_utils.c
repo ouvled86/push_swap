@@ -7,7 +7,7 @@ int check_range(long n)
     return(0);
 }
 
-int check_rep(t_stack **stack, long n)
+int check_rep(t_stack *stack, long n)
 {
     while (stack)
     {
@@ -38,10 +38,13 @@ void    add_node(t_stack **stack, int n)
     node->value = n;
     node->next = NULL;
     if (!*stack)
+    {
+        *stack = node;
         node->prev = NULL;
+    }
     else
     {
-        last = last_node;
+        last = last_node(*stack);
         last->next = node;
         node->prev = last;
     }
@@ -51,13 +54,15 @@ void    ini_stack(t_stack **a, char **argv)
 {
     long    n;
     int     i;
+
+    i = 0;
     while(argv[i])
     {
-        n = ft_atol(argv[i]);
+        n = atol(argv[i]);
         if (check_range(n))
-            return(ft_printf("Range Error"), 1);
-        if (check_rep(a, n))
-            return(ft_printf("Duplicated Number"), 1);
+            printf("Range Error");
+        if (check_rep(*a, n))
+            printf("Duplicated Number");
         add_node(a, (int)n);
         i++;
     }
