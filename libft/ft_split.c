@@ -6,27 +6,37 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:12:59 by ouel-bou          #+#    #+#             */
-/*   Updated: 2023/11/14 00:13:32 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/03/05 19:03:56 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	check(char *str, char c)
+static int	check(char **str, char c)
 {
 	int	occurances;
 	int	i;
+	int	j;
 
 	occurances = 0;
-	i = 0;
-	while (str[i])
+	j = 1;
+	while (str[j])
 	{
-		while (str[i] && str[i] == c)
-			i++;
-		if (str[i])
-			occurances++;
-		while (str[i] && str[i] != c)
-			i++;
+		i = 0;
+		while (str[j][i])
+		{
+			if (str[j][i] >= '0' && str[j][i] <= '9')
+				occurances++;
+			else
+				return (printf("ERROR\n"), -1);				
+			while (str[j][i] >= '0' && str[j][i] <= '9')
+				i++;
+			if (str[j][i] == c)
+				i++;
+			if (!(str[j][i] >= '0' && str[j][i] <= '9') && str[j][i])
+				return (printf("ERROR\n"), -1);				
+		}
+		j++;
 	}
 	return (occurances);
 }
@@ -71,28 +81,36 @@ static char	*extract(int *i, char *s, char c)
 	return (res);
 }
 
-char	**ft_split(char *s, char c)
+char	**ft_split(char **s, char c)
 {
-	int		i;
 	int		j;
 	int		occurances;
 	char	**result;
+	int		i;
 
 	j = 0;
-	if (!s)
+	if (!s || !*s)
 		return (NULL);
 	occurances = check(s, c);
 	result = (char **)malloc ((occurances + 1) * sizeof (char *));
 	if (!result)
 		return (NULL);
-	i = 0;
-	while (j < occurances)
+	for (int k = 1; s[k]; k++)
 	{
-		result[j] = extract(&i, s, c);
-		if (result[j] == NULL)
-			return (freemem(result));
-		j++;
+		i = 0;
+		while (j < occurances && s[k][i])
+		{
+			result[j] = extract(&i, s[k], c);
+			if (result[j] == NULL)
+				return (freemem(result));
+			j++;
+		}
 	}
 	result[occurances] = NULL;
 	return (result);
 }
+
+// int main(int argc, char **argv)
+// {
+//     printf("%d\n", check(argv, ' '));
+// }
