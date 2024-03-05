@@ -41,7 +41,7 @@ static int	check(char **str, char c)
 	return (occurances);
 }
 
-static char	**freemem(char **res)
+char	**freemem(char **res)
 {
 	int	i;
 
