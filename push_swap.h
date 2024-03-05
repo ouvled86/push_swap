@@ -5,6 +5,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # include "libft/libft.h"
+# include "printf.h"
 
 typedef struct  s_stack
 {
