@@ -60,9 +60,15 @@ void    ini_stack(t_stack **a, char **argv)
     {
         n = atol(argv[i]);
         if (check_range(n))
-            err_func(a, argv, "Range Error");
+        {
+            err_func(a, argv, "Error: A number is out of range");
+            return ;
+        }
         if (check_rep(*a, n))
-            err_func(a, argv, "Repetitive Number");
+        {
+            err_func(a, argv, "Error: A number is repetitive");
+            return ;
+        }
         add_node(a, (int)n);
         i++;
     }

@@ -28,13 +28,13 @@ static int	check(char **str, char c)
 			if (str[j][i] >= '0' && str[j][i] <= '9')
 				occurances++;
 			else
-				return (printf("ERROR\n"), -1);				
+				return (printf("Error: Incorrect Format\n"), -1);				
 			while (str[j][i] >= '0' && str[j][i] <= '9')
 				i++;
 			if (str[j][i] == c)
 				i++;
 			if (!(str[j][i] >= '0' && str[j][i] <= '9') && str[j][i])
-				return (printf("ERROR\n"), -1);				
+				return (printf("Error: Incorrect Format\n"), -1);				
 		}
 		j++;
 	}
@@ -78,33 +78,43 @@ static char	*extract(int *i, char *s, char c)
 		j++;
 	}
 	res[j] = '\0';
+	while (s[*i] && s[*i] == c)
+        (*i)++;
 	return (res);
+}
+
+void	extract_all(int *i, int *j, int k, int o, char **s, char **r)
+{
+	while (*j < o && s[k][*i])
+	{
+		r[*j] = extract(i, s[k], ' ');
+		if (r[*j] == NULL)
+			r = freemem(r);
+		(*j)++;
+	}
 }
 
 char	**ft_split(char **s, char c)
 {
-	int		j;
 	int		occurances;
 	char	**result;
 	int		i;
+	int		j;
+	int		k;
 
 	j = 0;
+	k = 1;
 	if (!s || !*s)
 		return (NULL);
 	occurances = check(s, c);
 	result = (char **)malloc ((occurances + 1) * sizeof (char *));
 	if (!result)
 		return (NULL);
-	for (int k = 1; s[k]; k++)
+	while (s[k])
 	{
 		i = 0;
-		while (j < occurances && s[k][i])
-		{
-			result[j] = extract(&i, s[k], c);
-			if (result[j] == NULL)
-				return (freemem(result));
-			j++;
-		}
+		extract_all(&i, &j, k, occurances, s, result);
+		k++;
 	}
 	result[occurances] = NULL;
 	return (result);
@@ -112,5 +122,9 @@ char	**ft_split(char **s, char c)
 
 // int main(int argc, char **argv)
 // {
-//     printf("%d\n", check(argv, ' '));
+// 	argv = ft_split(argv, ' ');
+//     for (int i = 0; argv[i]; i++)
+// 	{
+// 		printf("%s\n", argv[i]);
+// 	}
 // }
