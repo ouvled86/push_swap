@@ -31,6 +31,7 @@ typedef struct  s_stack
 }               t_stack;
 
 void    ini_stack(t_stack **a, char **argv);
+t_stack *last_node(t_stack *stack);
 int     stack_size_setpos(t_stack **stack);
 void    err_func(t_stack **stack, char **argv, char *display_msg);
 void    pa(t_stack **a, t_stack **b);
@@ -38,6 +39,9 @@ void    pb(t_stack **a, t_stack **b);
 void    ra(t_stack **a);
 void    rb(t_stack **b);
 void    rr(t_stack **a, t_stack **b);
+void    rra(t_stack **a);
+void    rrb(t_stack **b);
+void    rrr(t_stack **a, t_stack **b);
 
 
 #endif

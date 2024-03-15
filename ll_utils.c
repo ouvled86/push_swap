@@ -12,6 +12,30 @@
 
 #include "push_swap.h"
 
+static void    add_node(t_stack **stack, int n)
+{
+    t_stack *node;
+
+    if (!stack)
+        return ;
+    node = malloc(sizeof(t_stack));
+    if (!node)
+        return ;
+    node->value = n;
+    node->next = NULL;
+    if (!*stack)
+    {
+        *stack = node;
+        node->prev = NULL;
+    }
+    else
+    {
+        (*stack)->prev = node;
+        node->next = *stack;
+        *stack = node;
+    }
+}
+
 static int check_range_rep(t_stack *stack, long n)
 {
     if (n > INT_MAX || n < INT_MIN)
@@ -23,6 +47,13 @@ static int check_range_rep(t_stack *stack, long n)
         stack = stack->next;
     }
     return (0);
+}
+
+t_stack *last_node(t_stack *stack)
+{
+    while (stack->next)
+        stack = stack->next;
+    return (stack);
 }
 
 int stack_size_setpos(t_stack **stack)
@@ -53,29 +84,6 @@ int stack_size_setpos(t_stack **stack)
     return (size);
 }
 
-static void    add_node(t_stack **stack, int n)
-{
-    t_stack *node;
-
-    if (!stack)
-        return ;
-    node = malloc(sizeof(t_stack));
-    if (!node)
-        return ;
-    node->value = n;
-    node->next = NULL;
-    if (!*stack)
-    {
-        *stack = node;
-        node->prev = NULL;
-    }
-    else
-    {
-        (*stack)->prev = node;
-        node->next = *stack;
-        *stack = node;
-    }
-}
 
 void    ini_stack(t_stack **a, char **argv)
 {
