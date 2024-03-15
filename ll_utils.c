@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int check_range_rep(t_stack *stack, long n)
+static int check_range_rep(t_stack *stack, long n)
 {
     if (n > INT_MAX || n < INT_MIN)
         return (1);
@@ -43,7 +43,7 @@ int stack_size_setpos(t_stack **stack)
     i = 0;
     while (temp)
     {
-        if (i <= size / 2)
+        if (i < ((size + 1) / 2))
             temp->first_half = 1;
         else
             temp->first_half = 0;
@@ -53,7 +53,7 @@ int stack_size_setpos(t_stack **stack)
     return (size);
 }
 
-void    add_node(t_stack **stack, int n)
+static void    add_node(t_stack **stack, int n)
 {
     t_stack *node;
 
