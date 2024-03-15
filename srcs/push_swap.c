@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 int main(int argc, char **argv)
 {
@@ -27,10 +27,10 @@ int main(int argc, char **argv)
     ini_stack(&a, argv);
     set_tarpos(&a);
     temp = a;
-    while (temp)
-    {
-        ft_printf("value is %d ||| tarpos is %d", temp->value, temp->tarpos);
-        temp = temp->next;
-    }
+    ft_printf("value is %d ||| tarpos is %d\n", temp->value, temp->tarpos);
+    // while (temp)
+    // {
+    //     temp = temp->next;
+    // }
     return 0;
 }

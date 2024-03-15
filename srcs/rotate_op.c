@@ -6,11 +6,11 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 17:33:52 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/03/15 20:07:44 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/03/15 22:53:28 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void rot(t_stack **stack)
 {

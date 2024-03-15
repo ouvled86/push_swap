@@ -6,11 +6,11 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 21:59:50 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/03/15 22:45:32 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/03/15 23:22:26 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void    set_tarpos(t_stack **stack)
 {
@@ -21,20 +21,26 @@ void    set_tarpos(t_stack **stack)
     t_stack *temp;
 
     i = 1;
-	v = 0;
-	s = stack_size_setpos(stack);
 	max = NULL;
-    temp = *stack;
-    while (s)
+	v = temp->value;
+	temp = *stack;
+	s = stack_size_setpos(&temp);
+	ft_printf("%d\n", s);
+    while (s > 0)
     {
-	    while (temp->next)
+	    temp = *stack;
+	    while (temp)
         {
-            v = temp->next->value;
-			if (v > temp->value)
-				max = temp->next;
+            v = temp->value;
             temp = temp->next;
+			if (v < temp->value && temp->tarpos == 0)
+				max = temp;
         }
-		max->tarpos = i;
+		if (max)
+		{
+			max->tarpos = i;
+			ft_printf("||| %d |||\n", max->value);
+		}
 		i++;
 		s--;
 	}

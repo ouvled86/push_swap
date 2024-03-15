@@ -6,11 +6,11 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 03:50:08 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/03/15 03:50:09 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/03/15 22:53:28 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void    err_func(t_stack **stack, char **argv, char *display_msg)
 {
