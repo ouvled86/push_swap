@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/15 03:49:20 by ouel-bou          #+#    #+#             */
+/*   Updated: 2024/03/15 03:49:20 by ouel-bou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -11,10 +23,10 @@ typedef struct  s_stack
 {
     int             value;
     int             pos;
-    int             tar;
     int             cost;
-    struct s_stack  *prev;
+    int             first_half;
     struct s_stack  *next;
+    struct s_stack  *prev;
     struct s_stack  *target;
 }               t_stack;
 

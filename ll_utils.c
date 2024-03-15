@@ -1,14 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ll_utils.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/15 03:49:16 by ouel-bou          #+#    #+#             */
+/*   Updated: 2024/03/15 03:49:16 by ouel-bou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int check_range(long n)
+int check_range_rep(t_stack *stack, long n)
 {
     if (n > INT_MAX || n < INT_MIN)
         return (1);
-    return(0);
-}
-
-int check_rep(t_stack *stack, long n)
-{
     while (stack)
     {
         if (stack->value == n)
@@ -18,17 +25,37 @@ int check_rep(t_stack *stack, long n)
     return (0);
 }
 
-t_stack *last_node(t_stack *stack)
+int stack_size_setpos(t_stack **stack)
 {
-    while (stack->next)
-        stack = stack->next;
-    return (stack);
+    int size;
+    int i;
+    t_stack *temp;
+
+    size = 0;
+    temp = *stack;
+    while (temp)
+    {
+        temp->pos = size;
+        temp = temp->next;
+        size++;
+    }
+    temp = *stack;
+    i = 0;
+    while (temp)
+    {
+        if (i <= size / 2)
+            temp->first_half = 1;
+        else
+            temp->first_half = 0;
+        temp = temp->next;
+        i++;
+    }
+    return (size);
 }
 
 void    add_node(t_stack **stack, int n)
 {
     t_stack *node;
-    t_stack *last;
 
     if (!stack)
         return ;
@@ -44,9 +71,9 @@ void    add_node(t_stack **stack, int n)
     }
     else
     {
-        last = last_node(*stack);
-        last->next = node;
-        node->prev = last;
+        (*stack)->prev = node;
+        node->next = *stack;
+        *stack = node;
     }
 }
 
@@ -59,17 +86,14 @@ void    ini_stack(t_stack **a, char **argv)
     while(argv[i])
     {
         n = atol(argv[i]);
-        if (check_range(n))
+        if (check_range_rep(*a, n))
         {
-            err_func(a, argv, "Error: A number is out of range");
-            return ;
-        }
-        if (check_rep(*a, n))
-        {
-            err_func(a, argv, "Error: A number is repetitive");
-            return ;
+            err_func(a, argv, "Error");
+            exit(1);
         }
         add_node(a, (int)n);
         i++;
     }
+    if (*a)
+        stack_size_setpos(a);
 }

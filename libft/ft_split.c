@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:12:59 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/03/05 19:03:56 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/03/15 04:12:20 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ static int	check(char **str, char c)
 			if (str[j][i] >= '0' && str[j][i] <= '9')
 				occurances++;
 			else
-				return (printf("Error: Incorrect Format\n"), -1);				
+				return (printf("Error\n"), -1);				
 			while (str[j][i] >= '0' && str[j][i] <= '9')
 				i++;
 			if (str[j][i] == c)
 				i++;
 			if (!(str[j][i] >= '0' && str[j][i] <= '9') && str[j][i])
-				return (printf("Error: Incorrect Format\n"), -1);				
+				return (printf("Error\n"), exit(1), -1);				
 		}
 		j++;
 	}
