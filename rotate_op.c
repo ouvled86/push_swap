@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 17:33:52 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/03/15 19:22:45 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/03/15 20:07:44 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ void rot(t_stack **stack)
     holder = *stack;
     temp = last_node(*stack);
     holder->prev = temp;
-    holder->next = NULL;
     temp->next = holder;
-    *stack = temp;
+    *stack = (*stack)->next;
+    (*stack)->prev = NULL;
+    holder->next = NULL;
     stack_size_setpos(stack);
 }
 
