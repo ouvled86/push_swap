@@ -16,6 +16,7 @@ int main(int argc, char **argv)
 {
     t_stack *a;
     t_stack *b;
+    t_stack *temp;
 
     a = NULL;
     b = NULL;
@@ -24,5 +25,12 @@ int main(int argc, char **argv)
     if (argc >= 2)
         argv = ft_split(argv, ' ');
     ini_stack(&a, argv);
+    set_tarpos(&a);
+    temp = a;
+    while (temp)
+    {
+        ft_printf("value is %d ||| tarpos is %d", temp->value, temp->tarpos);
+        temp = temp->next;
+    }
     return 0;
 }
