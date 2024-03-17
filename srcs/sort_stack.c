@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 21:59:50 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/03/15 23:22:26 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/03/17 04:33:33 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,27 +21,21 @@ void    set_tarpos(t_stack **stack)
     t_stack *temp;
 
     i = 1;
-	max = NULL;
-	v = temp->value;
-	temp = *stack;
-	s = stack_size_setpos(&temp);
-	ft_printf("%d\n", s);
-    while (s > 0)
+	s = stack_size_setpos(stack);
+    while (s-- > 0)
     {
 	    temp = *stack;
+		v = 0;
 	    while (temp)
         {
-            v = temp->value;
-            temp = temp->next;
 			if (v < temp->value && temp->tarpos == 0)
+			{
 				max = temp;
+				v = temp->value;
+			}
+			temp = temp->next;
         }
-		if (max)
-		{
-			max->tarpos = i;
-			ft_printf("||| %d |||\n", max->value);
-		}
+		max->tarpos = i;
 		i++;
-		s--;
 	}
 }

@@ -25,12 +25,12 @@ int main(int argc, char **argv)
     if (argc >= 2)
         argv = ft_split(argv, ' ');
     ini_stack(&a, argv);
-    set_tarpos(&a);
     temp = a;
-    ft_printf("value is %d ||| tarpos is %d\n", temp->value, temp->tarpos);
-    // while (temp)
-    // {
-    //     temp = temp->next;
-    // }
+    set_tarpos(&temp);
+    while (temp)
+    {
+        ft_printf("value is %d ||| tarpos is %d\n", temp->value, temp->tarpos);
+        temp = temp->next;
+    }
     return 0;
 }
