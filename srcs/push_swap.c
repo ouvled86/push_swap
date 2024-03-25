@@ -29,8 +29,9 @@ int main(int argc, char **argv)
     set_tarpos(&temp);
     while (temp)
     {
-        ft_printf("value is %d ||| tarpos is %d\n", temp->value, temp->tarpos);
+        ft_printf("value is %d tar is %d\n", temp->value, temp->tarpos);
         temp = temp->next;
     }
+    
     return 0;
 }

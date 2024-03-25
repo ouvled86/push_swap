@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:12:59 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/03/15 04:12:20 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/03/25 21:57:03 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ static int	check(char **str, char c)
 		i = 0;
 		while (str[j][i])
 		{
-			if (str[j][i] >= '0' && str[j][i] <= '9')
+			if ((str[j][i] >= '0' && str[j][i] <= '9') || str[j][i] == '-')
 				occurances++;
 			else
 				return (printf("Error\n"), -1);				
-			while (str[j][i] >= '0' && str[j][i] <= '9')
+			while ((str[j][i] >= '0' && str[j][i] <= '9') || str[j][i] == '-')
 				i++;
 			if (str[j][i] == c)
 				i++;
-			if (!(str[j][i] >= '0' && str[j][i] <= '9') && str[j][i])
+			if (!((str[j][i] >= '0' && str[j][i] <= '9') || str[j][i] == '-') && str[j][i])
 				return (printf("Error\n"), exit(1), -1);				
 		}
 		j++;
@@ -119,12 +119,3 @@ char	**ft_split(char **s, char c)
 	result[occurances] = NULL;
 	return (result);
 }
-
-// int main(int argc, char **argv)
-// {
-// 	argv = ft_split(argv, ' ');
-//     for (int i = 0; argv[i]; i++)
-// 	{
-// 		printf("%s\n", argv[i]);
-// 	}
-// }

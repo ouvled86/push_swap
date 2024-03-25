@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 21:59:50 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/03/17 04:33:33 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/03/25 22:03:48 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void    set_tarpos(t_stack **stack)
     while (s-- > 0)
     {
 	    temp = *stack;
-		v = 0;
+		v = INT_MAX;
 	    while (temp)
         {
-			if (v < temp->value && temp->tarpos == 0)
+			if (v > temp->value && temp->tarpos == 0)
 			{
 				max = temp;
 				v = temp->value;
