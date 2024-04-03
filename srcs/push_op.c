@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include "../ft_printf/ft_printf.h"
 
 int pop(t_stack **stack)
 {
