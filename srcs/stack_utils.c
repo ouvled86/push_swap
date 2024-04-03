@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include "../ft_printf/ft_printf.h"
 
 static void    add_node(t_stack **stack, int n)
 {

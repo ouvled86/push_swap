@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include "../ft_printf/ft_printf.h"
-
 
 void    err_func(t_stack **stack, char **argv, char *display_msg)
 {

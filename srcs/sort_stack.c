@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include "../ft_printf/ft_printf.h"
 
 void    set_tarpos(t_stack **stack)
 {

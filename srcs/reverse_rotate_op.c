@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include "../ft_printf/ft_printf.h"
 
 void rev_rot(t_stack **stack)
 {
