@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 21:59:50 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/04 00:48:55 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/04 01:57:46 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void    set_tarpos(t_stack **stack)
 
     i = 0;
 	s = stack_size_setpos(stack);
-    while (s-- >= 0)
+    while (--s >= 0)
     {
 	    temp = *stack;
 		v = INT_MAX;
@@ -43,26 +43,28 @@ void    set_tarpos(t_stack **stack)
 
 void	push_chunks(t_stack **a, t_stack **b)
 {
-	int s;
 	int	p1;
 	int	p2;
 	int	c;
 
-	s = stack_size_setpos(a) - 1;
-	p1 = s / 3;
+	p1 = (*a)->size / 3;
 	p2 = p1 / 2;
 	c = 0;
-	while (c <= p1)
+	while ((*a)->size > 3)
 	{
-		ft_printf("p1 is %d\n", p1);
-		if (*b && (*b)->tarpos <= p2 && (*b)->size > 1)
+		if (*b && (*b)->tarpos < p2 && (*b)->size > 1)
 			rb(b);
-		if ((*a)->tarpos <= p1)
+		if ((*a)->tarpos < p1)
 		{
 			pb(a, b);
 			c++;
 		}
 		else
 			ra(a);
+		if (c >= p1)
+		{
+			p2 += p1;
+			p1 += p1;
+		}	
 	}
 }

@@ -78,12 +78,12 @@ int stack_size_setpos(t_stack **stack)
             temp->first_half = 1;
         else
             temp->first_half = 0;
+        temp->size = size;
         temp = temp->next;
         i++;
     }
     return (size);
 }
-
 
 void    ini_stack(t_stack **a, char **argv)
 {

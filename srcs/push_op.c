@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_op.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 03:49:06 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/03/15 22:53:28 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/04 02:02:26 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int pop(t_stack **stack)
         (*stack)->prev = NULL;
     free(temp);
     return (value);
-}
+}	// change return to a structure, return value and tarpos!
 
 void push(t_stack **stack, int value)
 {
@@ -41,7 +41,7 @@ void push(t_stack **stack, int value)
     if (*stack)
         (*stack)->prev = node;
     *stack = node;
-}
+}	// set tarpos on stack b
 
 void pa(t_stack **a, t_stack **b)
 {

@@ -33,6 +33,5 @@ int main(int argc, char **argv)
         ft_printf("value is %d tar is %d size is %d\n", temp->value, temp->tarpos, temp->size);
         temp = temp->next;
     }
-    
     return 0;
 }
