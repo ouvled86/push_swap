@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 21:59:50 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/04 20:45:30 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/04 20:59:49 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,20 +99,22 @@ void	lil_sort(t_stack **a)
 	v3 = (*a)->next->next->value;
 	if (v3 > v2 && v3 > v1 && v1 > v2)
 		sa(a);
-	if (v1 > v2 && v1 > v3)
+	else if (v1 > v2 && v1 > v3 && v2 > v3)
 	{
-		if (v2 > v3)
-		{
-			sa(a);
-			rra(a);
-		}
-		else
-			ra(a);
-	}
-	if (v1 > v3 && v2 > v1)
-		rra(a);
-	if (v1 > v2 && v3 > v1)
 		sa(a);
+		rra(a);
+	}
+	else if (v1 > v2 && v1 > v3 && v2 < v3)
+		ra(a);
+	else if (v1 > v3 && v2 > v1)
+		rra(a);
+	else if (v1 > v2 && v3 > v1)
+		sa(a);
+	else if (v1 < v2 && v3 < v2)
+	{
+		rra(a);
+		sa(a);
+	}
 }
 
 // Add is_sorted to check if list is sorted. DONE!
