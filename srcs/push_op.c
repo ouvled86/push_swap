@@ -49,8 +49,8 @@ void pa(t_stack **a, t_stack **b)
         return ;
     push(a, pop(b));
     ft_printf("pa\n");
-    stack_size_setpos(a);
-    stack_size_setpos(b);
+    (*a)->size = stack_size_setpos(a);
+    (*b)->size = stack_size_setpos(b);
 }
 
 void pb(t_stack **a, t_stack **b)
@@ -59,6 +59,6 @@ void pb(t_stack **a, t_stack **b)
         return ;
     push(b, pop(a));
     ft_printf("pb\n");
-    stack_size_setpos(a);
-    stack_size_setpos(b);
+    (*a)->size = stack_size_setpos(a);
+    (*b)->size = stack_size_setpos(b);
 }

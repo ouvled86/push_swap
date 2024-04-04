@@ -24,7 +24,9 @@ typedef struct  s_stack
     int             value;
     int             pos;
     int             tarpos;
+    int             size;
     int             first_half;
+    int             set;
     struct s_stack  *next;
     struct s_stack  *prev;
     struct s_stack  *target;
@@ -49,5 +51,6 @@ void    rrb(t_stack **b);
 void    rrr(t_stack **a, t_stack **b);
 
 void    set_tarpos(t_stack **stack);
+void    push_chunks(t_stack **a, t_stack **b);
 
 #endif

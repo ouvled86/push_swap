@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_op.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 17:33:52 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/03/15 22:53:28 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/04 00:28:12 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void rot(t_stack **stack)
     *stack = (*stack)->next;
     (*stack)->prev = NULL;
     holder->next = NULL;
-    stack_size_setpos(stack);
+    (*stack)->size = stack_size_setpos(stack);
 }
 
 void ra(t_stack **a)

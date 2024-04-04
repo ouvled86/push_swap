@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate_op.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 17:33:47 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/03/15 22:53:28 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/04 00:28:32 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void rev_rot(t_stack **stack)
     holder->next = temp;
     temp->prev = holder;
     *stack = holder;
-    stack_size_setpos(stack);
+    (*stack)->size = stack_size_setpos(stack);
 }
 
 void rra(t_stack **a)

@@ -103,5 +103,5 @@ void    ini_stack(t_stack **a, char **argv)
         i++;
     }
     if (*a)
-        stack_size_setpos(a);
+        (*a)->size = stack_size_setpos(a);
 }

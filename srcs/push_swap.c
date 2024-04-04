@@ -25,11 +25,12 @@ int main(int argc, char **argv)
     if (argc >= 2)
         argv = ft_split(argv, ' ');
     ini_stack(&a, argv);
-    temp = a;
-    set_tarpos(&temp);
+    set_tarpos(&a);
+    push_chunks(&a, &b);
+    temp = b;
     while (temp)
     {
-        ft_printf("value is %d tar is %d\n", temp->value, temp->tarpos);
+        ft_printf("value is %d tar is %d size is %d\n", temp->value, temp->tarpos, temp->size);
         temp = temp->next;
     }
     
