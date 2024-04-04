@@ -32,6 +32,13 @@ typedef struct  s_stack
     struct s_stack  *target;
 }               t_stack;
 
+typedef struct	s_data
+{
+    int	value;
+	int tarpos;
+}				t_data;
+
+
 t_stack *last_node(t_stack *stack);
 int     stack_size_setpos(t_stack **stack);
 void    ini_stack(t_stack **a, char **argv);

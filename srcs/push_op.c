@@ -3,45 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   push_op.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 03:49:06 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/04 02:02:26 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/04 16:59:47 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int pop(t_stack **stack)
+t_data  *pop(t_stack **stack)
 {
-    int value;
+    t_data  *data;
     t_stack *temp;
 
     if (!*stack)
-        return (ft_printf("Stack Underflow\n"), 0);
+        return (ft_printf("Error\n"), NULL);
+    data = malloc(sizeof(t_data));
+    if (!data)
+        return (ft_printf("Error\n"), NULL);
     temp = *stack;
-    value = temp->value;
+    data->value = temp->value;
+    data->tarpos = temp->tarpos;
     *stack = (*stack)->next;
     if (*stack)
         (*stack)->prev = NULL;
     free(temp);
-    return (value);
-}	// change return to a structure, return value and tarpos!
+    return (data);
+}
 
-void push(t_stack **stack, int value)
+void push(t_stack **stack, t_data *data)
 {
     t_stack *node;
 
     node = malloc(sizeof(t_stack));
     if (!node)
         err_func(stack, NULL, "Error");
-    node->value = value;
-    node->next = *stack;
+    node->value = data->value;
+    node->tarpos = data->tarpos;
+    node->next = NULL;
     node->prev = NULL;
     if (*stack)
+    {
+        node->next = *stack;
         (*stack)->prev = node;
+    }
     *stack = node;
-}	// set tarpos on stack b
+}
 
 void pa(t_stack **a, t_stack **b)
 {

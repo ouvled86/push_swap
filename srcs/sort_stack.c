@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 21:59:50 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/04 01:57:46 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/04 17:20:05 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,25 +46,29 @@ void	push_chunks(t_stack **a, t_stack **b)
 	int	p1;
 	int	p2;
 	int	c;
+	int	t;
 
 	p1 = (*a)->size / 3;
 	p2 = p1 / 2;
 	c = 0;
+	t = (*a)->size / 3;
+	ft_printf("p1 is %d, p2 is %d\n", p1, p2);
 	while ((*a)->size > 3)
 	{
-		if (*b && (*b)->tarpos < p2 && (*b)->size > 1)
-			rb(b);
-		if ((*a)->tarpos < p1)
+		if ((*a)->tarpos <= p1)
 		{
 			pb(a, b);
 			c++;
 		}
 		else
 			ra(a);
+		if (*b && (*b)->tarpos <= p2 && (*b)->size > 1)
+			rb(b);
 		if (c >= p1)
 		{
-			p2 += p1;
-			p1 += p1;
+			p2 += t;
+			p1 += t;
+			ft_printf("p1 is %d, p2 is %d\n", p1, p2);
 		}	
 	}
 }
