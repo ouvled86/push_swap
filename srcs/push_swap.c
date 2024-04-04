@@ -27,7 +27,8 @@ int main(int argc, char **argv)
     ini_stack(&a, argv);
     set_tarpos(&a);
     push_chunks(&a, &b);
-    temp = b;
+    lil_sort (&a);
+    temp = a;
     while (temp)
     {
         ft_printf("value is %d tar is %d size is %d\n", temp->value, temp->tarpos, temp->size);

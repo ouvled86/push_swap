@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 21:59:50 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/04 17:40:46 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/04 20:45:30 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,3 +69,56 @@ void	push_chunks(t_stack **a, t_stack **b)
 		}	
 	}
 }
+
+int	is_sorted(t_stack **a)
+{
+	t_stack	*temp;
+	int		f;
+	int		v;
+	
+	temp = *a;
+	f = 1;
+	while (temp->next)
+	{
+		v = temp->next->value;
+		if (v < temp->value)
+			f = 0;
+		temp = temp->next;
+	}
+	return (f);
+}
+
+void	lil_sort(t_stack **a)
+{
+	int	v1;
+	int	v2;
+	int	v3;
+
+	v1 = (*a)->value;
+	v2 = (*a)->next->value;
+	v3 = (*a)->next->next->value;
+	if (v3 > v2 && v3 > v1 && v1 > v2)
+		sa(a);
+	if (v1 > v2 && v1 > v3)
+	{
+		if (v2 > v3)
+		{
+			sa(a);
+			rra(a);
+		}
+		else
+			ra(a);
+	}
+	if (v1 > v3 && v2 > v1)
+		rra(a);
+	if (v1 > v2 && v3 > v1)
+		sa(a);
+}
+
+// Add is_sorted to check if list is sorted. DONE!
+// Add tiny sort to sort last 3 elements. DONE!
+// Add push_back, fix first_half when a node is pushed to b.
+// (temp = *b); While temp->tarpos == temp->size -1
+// if (temp->firsthalf == 1); rb til (*b)->tarpos == (*b)->size -1; pa
+// if (temp->firsthalf == 0); rrb til (*b)->tarpos == (*b)->size -1; pa
+// temp = temp->next;
