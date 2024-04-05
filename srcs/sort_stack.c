@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 21:59:50 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/04 21:05:57 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/05 22:37:52 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,25 @@ void	lil_sort(t_stack **a)
 
 void push_back (t_stack **a, t_stack **b)
 {
-	
+	t_stack	*temp;
+
+	while (*b)
+	{
+		temp = *b;
+		while (temp->tarpos == (temp->size - 1))
+			temp = temp->next;
+		if (temp->first_half == 1 && temp->size > 1)
+		{
+			while (*b != temp)
+				rb(b);
+		}
+		else if (temp->first_half == 0 && temp->size > 1)
+		{
+			while (*b != temp)
+				rrb(b);
+		}
+		pa(a, b);
+	}
 }
 
 // Add is_sorted to check if list is sorted. DONE!

@@ -28,7 +28,9 @@ int main(int argc, char **argv)
     set_tarpos(&a);
     push_chunks(&a, &b);
     lil_sort (&a);
-    temp = b;
+    push_back(&a, &b);
+    temp = a;
+    ft_printf("value is %d\n", temp->value);
     while (temp)
     {
         ft_printf("value is %d tar is %d size is %d first half %d\n", temp->value, temp->tarpos, temp->size, temp->first_half);

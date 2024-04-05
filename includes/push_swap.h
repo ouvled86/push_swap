@@ -59,5 +59,6 @@ void    rrr(t_stack **a, t_stack **b);
 void    set_tarpos(t_stack **stack);
 void    push_chunks(t_stack **a, t_stack **b);
 void    lil_sort(t_stack **a);
+void    push_back (t_stack **a, t_stack **b);
 
 #endif
