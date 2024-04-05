@@ -30,7 +30,7 @@ int main(int argc, char **argv)
     lil_sort (&a);
     push_back(&a, &b);
     temp = a;
-    ft_printf("value is %d\n", temp->value);
+    // ft_printf("value is %d\n", temp->value);
     while (temp)
     {
         ft_printf("value is %d tar is %d size is %d first half %d\n", temp->value, temp->tarpos, temp->size, temp->first_half);
