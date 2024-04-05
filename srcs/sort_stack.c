@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 21:59:50 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/04 20:59:49 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/04 21:05:57 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,11 @@ void	lil_sort(t_stack **a)
 		rra(a);
 		sa(a);
 	}
+}
+
+void push_back (t_stack **a, t_stack **b)
+{
+	
 }
 
 // Add is_sorted to check if list is sorted. DONE!

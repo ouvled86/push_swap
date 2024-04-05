@@ -28,10 +28,10 @@ int main(int argc, char **argv)
     set_tarpos(&a);
     push_chunks(&a, &b);
     lil_sort (&a);
-    temp = a;
+    temp = b;
     while (temp)
     {
-        ft_printf("value is %d tar is %d size is %d\n", temp->value, temp->tarpos, temp->size);
+        ft_printf("value is %d tar is %d size is %d first half %d\n", temp->value, temp->tarpos, temp->size, temp->first_half);
         temp = temp->next;
     }
     return 0;
