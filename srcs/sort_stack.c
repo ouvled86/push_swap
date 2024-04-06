@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 21:59:50 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/05 22:49:47 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/06 00:42:27 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,19 +121,19 @@ void push_back (t_stack **a, t_stack **b)
 {
 	t_stack	*temp;
 
-	while (*b)
+	while (b && *b)
 	{
 		temp = *b;
-		while (temp->tarpos == (temp->size - 1))
+		while (temp && temp->tarpos == (temp->size - 1))
 			temp = temp->next;
-		if (temp->first_half == 1 && temp->size > 1)
+		if (temp && temp->first_half == 1 && temp->size > 1)
 		{
-			while ((*b)->tarpos == ((*b)->size - 1))
+			while (b && *b && (*b)->tarpos != ((*b)->size - 1))
 				rb(b);
 		}
-		else if (temp->first_half == 0 && temp->size > 1)
+		else if (temp && temp->first_half == 0 && temp->size > 1)
 		{
-			while ((*b)->tarpos == ((*b)->size - 1))
+			while (b && *b && (*b)->tarpos != ((*b)->size - 1))
 				rrb(b);
 		}
 		pa(a, b);

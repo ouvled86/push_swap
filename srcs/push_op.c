@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_op.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 03:49:06 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/04 20:47:18 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/06 00:46:42 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,10 @@ void pa(t_stack **a, t_stack **b)
         return ;
     push(a, pop(b));
     ft_printf("pa\n");
-    (*a)->size = stack_size_setpos(a);
-    (*b)->size = stack_size_setpos(b);
+    if (*a)
+        (*a)->size = stack_size_setpos(a);
+    if (*b)
+        (*b)->size = stack_size_setpos(b);
 }
 
 void pb(t_stack **a, t_stack **b)
