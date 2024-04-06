@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 03:49:06 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/06 00:46:42 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/06 00:59:57 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ void pb(t_stack **a, t_stack **b)
         return ;
     push(b, pop(a));
     ft_printf("pb\n");
-    (*a)->size = stack_size_setpos(a);
-    (*b)->size = stack_size_setpos(b);
+    if (*a)
+        (*a)->size = stack_size_setpos(a);
+    if (*b)
+        (*b)->size = stack_size_setpos(b);
 }

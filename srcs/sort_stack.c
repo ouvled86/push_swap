@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 21:59:50 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/06 00:42:27 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/06 03:00:17 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,19 +124,23 @@ void push_back (t_stack **a, t_stack **b)
 	while (b && *b)
 	{
 		temp = *b;
-		while (temp && temp->tarpos == (temp->size - 1))
+		while (temp && temp->tarpos != (temp->size - 1))
 			temp = temp->next;
+		if (temp)
+			ft_printf("|||| LOOKING FOR : %d ||||\n", temp->size - 1);
 		if (temp && temp->first_half == 1 && temp->size > 1)
 		{
-			while (b && *b && (*b)->tarpos != ((*b)->size - 1))
+			while ((*b)->tarpos != (*b)->size - 1)
 				rb(b);
 		}
 		else if (temp && temp->first_half == 0 && temp->size > 1)
 		{
-			while (b && *b && (*b)->tarpos != ((*b)->size - 1))
+			while ((*b)->tarpos != (*b)->size - 1)
 				rrb(b);
 		}
+		// ft_printf("|||| PUSHING : %d ||||\n", (*b)->tarpos);
 		pa(a, b);
+		// if ((*b)->tarpos == ((*b)->size - 1))
 	}
 }
 
@@ -147,3 +151,5 @@ void push_back (t_stack **a, t_stack **b)
 // if (temp->firsthalf == 1); rb til (*b)->tarpos == (*b)->size -1; pa
 // if (temp->firsthalf == 0); rrb til (*b)->tarpos == (*b)->size -1; pa
 // temp = temp->next;
+// push_back DONE. Need to fix and optimize push_chunks.
+// which doesn't work properly
