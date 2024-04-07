@@ -92,6 +92,8 @@ void    ini_stack(t_stack **a, char **argv)
 
     i = 0;
     while(argv[i])
+        i++;
+    while(argv[--i])
     {
         n = atol(argv[i]);
         if (check_range_rep(*a, n))
@@ -100,7 +102,6 @@ void    ini_stack(t_stack **a, char **argv)
             exit(1);
         }
         add_node(a, (int)n);
-        i++;
     }
     if (*a)
         (*a)->size = stack_size_setpos(a);

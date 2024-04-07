@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 21:59:50 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/07 01:04:07 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/07 18:10:44 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,56 +43,30 @@ void    set_tarpos(t_stack **stack)
 
 void	push_chunks(t_stack **a, t_stack **b)
 {
-	int	p1;
-	int	p2;
+	int			p1;
+	int			p2;
+	int			t;
 	static int	c;
-	int	t;
 
-	p1 = ((*a)->size - 1) / 3;
+	p1 = ((*a)->size - 1) / 4;
 	p2 = p1 / 2;
-	t = ((*a)->size - 1) / 3;
+	t = ((*a)->size - 1) / 4;
 	while ((*a)->size > 3)
 	{
-		if ((*a)->tarpos < p1)
+		if (*b && (*b)->tarpos <= p2 && (*b)->size > 1)
+			rb(b);
+		if ((*a)->tarpos <= p1)
 		{
 			pb(a, b);
 			c++;
 		}
 		else
 			ra(a);
-		if (*b && (*b)->tarpos < p2 && (*b)->size > 1)
-			rb(b);
 		if (c >= p1)
 		{
 			p2 += t;
 			p1 += t;
 		}	
-	}
-}
-
-void	push_chunks2(t_stack **a, t_stack **b)
-{
-	int		i;
-	t_stack	*temp;
-
-	i = 0;
-	while ((*a)->size > 3)
-	{
-		temp = *a;
-		while (temp->tarpos >= i)
-			temp = temp->next;
-		if (temp->first_half == 1)
-		{
-			while (*a != temp)
-				ra(a);
-		}
-		else
-		{
-			while (*a != temp)
-				rra(a);
-		}
-		pb(a, b);
-		i++;
 	}
 }
 
@@ -152,8 +126,6 @@ void push_back (t_stack **a, t_stack **b)
 		temp = *b;
 		while (temp && temp->tarpos != (temp->size - 1))
 			temp = temp->next;
-		// if (temp)
-		// 	ft_printf("|||| LOOKING FOR : %d ||||\n", temp->size - 1);
 		if (temp && temp->first_half == 1 && temp->size > 1)
 		{
 			while ((*b)->tarpos != (*b)->size - 1)
@@ -164,18 +136,6 @@ void push_back (t_stack **a, t_stack **b)
 			while ((*b)->tarpos != (*b)->size - 1)
 				rrb(b);
 		}
-		// ft_printf("|||| PUSHING : %d ||||\n", (*b)->tarpos);
 		pa(a, b);
-		// if ((*b)->tarpos == ((*b)->size - 1))
 	}
 }
-
-// Add is_sorted to check if list is sorted. DONE!
-// Add tiny sort to sort last 3 elements. DONE!
-// Add push_back, fix first_half when a node is pushed to b.
-// (temp = *b); While temp->tarpos == temp->size -1
-// if (temp->firsthalf == 1); rb til (*b)->tarpos == (*b)->size -1; pa
-// if (temp->firsthalf == 0); rrb til (*b)->tarpos == (*b)->size -1; pa
-// temp = temp->next;
-// push_back DONE. Need to fix and optimize push_chunks.
-// which doesn't work properly

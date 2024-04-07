@@ -16,7 +16,6 @@ int main(int argc, char **argv)
 {
     t_stack *a;
     t_stack *b;
-    t_stack *temp;
 
     a = NULL;
     b = NULL;
@@ -25,16 +24,11 @@ int main(int argc, char **argv)
     if (argc >= 2)
         argv = ft_split(argv, ' ');
     ini_stack(&a, argv);
+    if (is_sorted(&a))
+        exit(0);
     set_tarpos(&a);
     push_chunks(&a, &b);
-    lil_sort (&a);
+    lil_sort(&a);
     push_back(&a, &b);
-    temp = a;
-    // // ft_printf("value is %d\n", temp->value);
-    while (temp)
-    {
-        ft_printf("value is %d tar is %d size is %d first half %d\n", temp->value, temp->tarpos, temp->size, temp->first_half);
-        temp = temp->next;
-    }
     return 0;
 }

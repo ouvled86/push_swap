@@ -1,4 +1,3 @@
-# Makefile!!!!
 NAME = push_swap
 CFLAGS = -Wall -Wextra -Werror
 SRCS = srcs/push_swap.c srcs/stack_utils.c srcs/error_management.c srcs/push_op.c srcs/reverse_rotate_op.c srcs/rotate_op.c srcs/swap_op.c srcs/sort_stack.c
@@ -17,7 +16,7 @@ $(LIBFTPRINTF): includes/libft.h
 	cc $(CFLAGS) -c $< -o $@
 
 clean:
-	make clean -C libft/
+	make fclean -C libft/
 	rm -rf $(OBJS)
 
 fclean:
