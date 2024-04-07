@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 21:59:50 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/06 03:00:17 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/07 01:04:07 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,32 @@ void	push_chunks(t_stack **a, t_stack **b)
 	}
 }
 
+void	push_chunks2(t_stack **a, t_stack **b)
+{
+	int		i;
+	t_stack	*temp;
+
+	i = 0;
+	while ((*a)->size > 3)
+	{
+		temp = *a;
+		while (temp->tarpos >= i)
+			temp = temp->next;
+		if (temp->first_half == 1)
+		{
+			while (*a != temp)
+				ra(a);
+		}
+		else
+		{
+			while (*a != temp)
+				rra(a);
+		}
+		pb(a, b);
+		i++;
+	}
+}
+
 int	is_sorted(t_stack **a)
 {
 	t_stack	*temp;
@@ -126,8 +152,8 @@ void push_back (t_stack **a, t_stack **b)
 		temp = *b;
 		while (temp && temp->tarpos != (temp->size - 1))
 			temp = temp->next;
-		if (temp)
-			ft_printf("|||| LOOKING FOR : %d ||||\n", temp->size - 1);
+		// if (temp)
+		// 	ft_printf("|||| LOOKING FOR : %d ||||\n", temp->size - 1);
 		if (temp && temp->first_half == 1 && temp->size > 1)
 		{
 			while ((*b)->tarpos != (*b)->size - 1)
