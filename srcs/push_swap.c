@@ -16,7 +16,6 @@ int main(int argc, char **argv)
 {
     t_stack *a;
     t_stack *b;
-    t_stack *temp;
 
     a = NULL;
     b = NULL;
@@ -30,13 +29,6 @@ int main(int argc, char **argv)
     set_tarpos(&a);
     push_chunks(&a, &b);
     lil_sort(&a);
-    push_back2(&a, &b);
-    temp = a;
-    while (temp)
-    {
-        ft_printf("value is %d, target pos is %d, size is %d\n", temp->value, temp->tarpos, temp->size);
-        temp = temp->next;
-    }
-    // push_back(&a, &b);
+    push_back(&a, &b);
     return 0;
 }

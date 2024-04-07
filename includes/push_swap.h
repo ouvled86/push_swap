@@ -61,8 +61,8 @@ void    push_chunks(t_stack **a, t_stack **b);
 int     is_sorted(t_stack **a);
 void    lil_sort(t_stack **a);
 void    push_back(t_stack **a, t_stack **b);
-void    push_back2(t_stack **a, t_stack **b);
 
 int     locate_pb(t_stack **a, t_stack **b);
 int     bottom_a(t_stack **a);
+
 #endif

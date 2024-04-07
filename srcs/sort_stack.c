@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 21:59:50 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/07 22:20:07 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/07 23:31:09 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ void	push_chunks(t_stack **a, t_stack **b)
 	int			t;
 	static int	c;
 
-	p1 = ((((*a)->size) / 3) - 1);
+	p1 = ((((*a)->size - 1) / 3));
 	p2 = p1 / 2;
-	t = ((((*a)->size) / 3) - 1);
+	t = ((((*a)->size - 1) / 3));
 	while ((*a)->size > 3)
 	{
 		if (*b && (*b)->tarpos <= p2 && (*b)->size > 1)
@@ -64,8 +64,9 @@ void	push_chunks(t_stack **a, t_stack **b)
 			ra(a);
 		if (c >= p1)
 		{
-			p1 += (*a)->size / 2;
-			p2 += (*a)->size / 2;
+			p1 += ((*a)->size - 1) / 2;
+			p2 += ((*a)->size - 1) / 2;
+			// p2 += (*a)->size / 2;
 		}	
 	}
 }
@@ -117,62 +118,42 @@ void	lil_sort(t_stack **a)
 	}
 }
 
-void push_back (t_stack **a, t_stack **b)
+void	push_back(t_stack **a, t_stack **b)
 {
-	t_stack	*temp;
+    int    a_bot;
 
-	while (b && *b)
-	{
-		temp = *b;
-		while (temp && temp->tarpos != (temp->size - 1))
-			temp = temp->next;
-		if (temp && temp->first_half == 1 && temp->size > 1)
-		{
-			while ((*b)->tarpos != (*b)->size - 1)
-				rb(b);
-		}
-		else if (temp && temp->first_half == 0 && temp->size > 1)
-		{
-			while ((*b)->tarpos != (*b)->size - 1)
-				rrb(b);
-		}
-		pa(a, b);
-	}
-}
-
-void	push_back2(t_stack **a, t_stack **b)
-{
-	int	a_bot;
-	int	a_nbot;
-
-	a_bot = bottom_a(a);
-	while (b && *b)
-	{
-		a_nbot = 0;
-		if (bottom_a(a) < (*a)->tarpos)
-			a_nbot = bottom_a(a);
-		if (locate_pb(a, b) == 1)
-		{
-			while (*b && (*b)->tarpos != (*a)->tarpos - 1)
-			{
-				if ((*b)->tarpos > a_nbot)
-				{
-					a_nbot = (*b)->tarpos;
-					pa(a, b);
-					ra(a);
-				}
-				else
-					rb(b);
-			}
-			pa(a, b);
-		}
-		else if (locate_pb(a, b) == 0)
-		{
-			while (*b && (*b)->tarpos != (*a)->tarpos - 1)
-				rrb(b);
-			pa(a, b);
-		}
-		while (a_nbot == (*a)->size - 1)
-			rra(a);
-	}
+    a_bot = bottom_a(a);
+    while (b && *b)
+    {
+        if (*b && locate_pb(a, b) == 1)
+        {
+            while (*b && (*b)->tarpos != (*a)->tarpos - 1)
+            {
+                if (a_bot == bottom_a(a) || (*b)->tarpos > bottom_a(a))
+                {
+                    pa(a, b);
+                    ra(a);
+                }
+                else
+                    rb(b);
+            }
+        }
+        else if (*b && locate_pb(a, b) == 0)
+        {
+            while (*b && (*b)->tarpos != (*a)->tarpos - 1)
+            {
+                if (a_bot == bottom_a(a) || (*b)->tarpos > bottom_a(a))
+                {
+                    pa(a, b);
+                    ra(a);
+                }
+                else
+                    rrb(b);
+            }
+        }
+        while((*b) && (*b)->tarpos == (*a)->tarpos - 1)
+            pa(a, b);
+        while (bottom_a(a) == (*a)->tarpos - 1)
+            rra(a);
+    }
 }
