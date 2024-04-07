@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 21:59:50 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/07 18:10:44 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/07 19:43:56 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ void	push_chunks(t_stack **a, t_stack **b)
 	int			t;
 	static int	c;
 
-	p1 = ((*a)->size - 1) / 4;
+	p1 = ((((*a)->size) / 3) - 1);
 	p2 = p1 / 2;
-	t = ((*a)->size - 1) / 4;
+	t = ((((*a)->size) / 3) - 1);
 	while ((*a)->size > 3)
 	{
 		if (*b && (*b)->tarpos <= p2 && (*b)->size > 1)
 			rb(b);
-		if ((*a)->tarpos <= p1)
+		if ((*a)->tarpos < p1)
 		{
 			pb(a, b);
 			c++;
@@ -64,8 +64,8 @@ void	push_chunks(t_stack **a, t_stack **b)
 			ra(a);
 		if (c >= p1)
 		{
-			p2 += t;
-			p1 += t;
+			p1 += (*a)->size / 2;
+			p2 += (*a)->size / 2;
 		}	
 	}
 }
