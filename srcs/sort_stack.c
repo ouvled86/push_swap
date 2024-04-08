@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 21:59:50 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/08 00:36:20 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/08 00:43:16 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ void    push_chunks(t_stack **a, t_stack **b)
     int             lastp1;
     int            p2;
 
-    p1 = (*a)->size / 3;
-    p2 = (*a)->size / 6;
+    p1 = ((*a)->size - 1) / 3;
+    p2 = ((*a)->size - 1) / 6;
     lastp1 = -1;
     while ((*a)->size > 3)
     {

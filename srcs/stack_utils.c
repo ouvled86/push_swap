@@ -95,7 +95,7 @@ void    ini_stack(t_stack **a, char **argv)
         i++;
     while(argv[--i])
     {
-        n = atol(argv[i]);
+        n = ft_atoi(argv[i]);
         if (check_range_rep(*a, n))
         {
             err_func(a, argv, "Error");
