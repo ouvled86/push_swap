@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 21:59:50 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/08 00:43:16 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/08 01:28:39 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,59 +41,59 @@ void    set_tarpos(t_stack **stack)
 	}
 }
 
-// void	push_chunks(t_stack **a, t_stack **b)
-// {
-// 	int			p1;
-// 	int			p2;
-// 	int			t;
-// 	static int	c;
-
-// 	p1 = ((((*a)->size - 1) / 3));
-// 	p2 = p1 / 2;
-// 	t = ((((*a)->size - 1) / 3));
-// 	while ((*a)->size > 3)
-// 	{
-// 		if (*b && (*b)->tarpos <= p2 && (*b)->size > 1)
-// 			rb(b);
-// 		if ((*a)->tarpos < p1)
-// 		{
-// 			pb(a, b);
-// 			c++;
-// 		}
-// 		else
-// 			ra(a);
-// 		if (c >= p1)
-// 		{
-// 			p1 += ((*a)->size - 1) / 2;
-// 			p2 += ((*a)->size - 1) / 2;
-// 		}	
-// 	}
-// }
-void    push_chunks(t_stack **a, t_stack **b)
+void	push_chunks(t_stack **a, t_stack **b)
 {
-    int            p1;
-    int             lastp1;
-    int            p2;
+	int			p1;
+	int			p2;
+	int			t;
+	static int	c;
 
-    p1 = ((*a)->size - 1) / 3;
-    p2 = ((*a)->size - 1) / 6;
-    lastp1 = -1;
-    while ((*a)->size > 3)
-    {
-        if ((*a)->tarpos < p1)
-            pb(a, b);
-        else
-            ra(a);
-        if (*b && (*b)->size > 1 && (*b)->tarpos >= lastp1 && (*b)->tarpos <= p2)
-            rb(b);
-        if ((*b)->size == p1)
-        {
-            lastp1 = p1;
-            p1 += (*a)->size / 3;
-            p2 = (*a)->size / 6 + lastp1;
-        }    
-    }
+	p1 = ((((*a)->size - 1) / 3));
+	p2 = p1 / 2;
+	t = ((((*a)->size - 1) / 3));
+	while ((*a)->size > 3)
+	{
+		if (*b && (*b)->tarpos <= p2 && (*b)->size > 1)
+			rb(b);
+		if ((*a)->tarpos < p1)
+		{
+			pb(a, b);
+			c++;
+		}
+		else
+			ra(a);
+		if (c >= p1)
+		{
+			p1 += ((*a)->size - 1) / 2;
+			p2 += ((*a)->size - 1) / 2;
+		}	
+	}
 }
+// void    push_chunks(t_stack **a, t_stack **b)
+// {
+//     int            p1;
+//     int             lastp1;
+//     int            p2;
+
+//     p1 = ((*a)->size - 1) / 3;
+//     p2 = p1 / 2;
+//     lastp1 = -1;
+//     while ((*a)->size > 3)
+//     {
+//         if (*b && (*b)->size > 1 && (*b)->tarpos >= lastp1 && (*b)->tarpos <= p2)
+//             rb(b);
+//         if ((*a)->tarpos < p1)
+//             pb(a, b);
+//         else
+//             ra(a);
+//         if ((*b)->size == p1)
+//         {
+//             lastp1 = p1;
+//             p1 += ((*a)->size - 1) / 2;
+//  			p2 += ((*a)->size - 1) / 2;
+//         }    
+//     }
+// }
 
 int	is_sorted(t_stack **a)
 {
