@@ -1,4 +1,4 @@
-NAME = libft_printf.a
+NAME = libftprintf.a
 
 SRC =	ft_atoi.c \
         ft_bzero.c \
