@@ -64,5 +64,7 @@ void    push_back(t_stack **a, t_stack **b);
 
 int     locate_pb(t_stack **a, t_stack **b);
 int     bottom_a(t_stack **a);
+void    rot_push(t_stack **a, t_stack **b, int a_bot);
+void    revrot_push(t_stack **a, t_stack **b, int a_bot);
 
 #endif

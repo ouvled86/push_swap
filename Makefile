@@ -7,13 +7,13 @@ LIBFTPRINTF = libft/libft_printf.a
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFTPRINTF)
-	cc $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFTPRINTF)
+	gcc -g $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFTPRINTF)
 
 $(LIBFTPRINTF): includes/libft.h
 	make -C libft/
 
 %.o: %.c includes/push_swap.h
-	cc $(CFLAGS) -c $< -o $@
+	cc -g $(CFLAGS) -c $< -o $@
 
 clean:
 	make fclean -C libft/

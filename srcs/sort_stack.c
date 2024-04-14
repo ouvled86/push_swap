@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 21:59:50 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/08 01:28:39 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/14 21:10:32 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,59 +41,34 @@ void    set_tarpos(t_stack **stack)
 	}
 }
 
-void	push_chunks(t_stack **a, t_stack **b)
+void    push_chunks(t_stack **a, t_stack **b)
 {
-	int			p1;
-	int			p2;
-	int			t;
-	static int	c;
+    int p1;
+    int p2;
+	int	s;
 
-	p1 = ((((*a)->size - 1) / 3));
-	p2 = p1 / 2;
-	t = ((((*a)->size - 1) / 3));
-	while ((*a)->size > 3)
-	{
-		if (*b && (*b)->tarpos <= p2 && (*b)->size > 1)
-			rb(b);
-		if ((*a)->tarpos < p1)
-		{
-			pb(a, b);
-			c++;
-		}
-		else
+    s = stack_size_setpos(a);
+	p1 = 0;
+    p2 = 30;
+    while ((*a)->size > 3)
+    {
+		if ((*a)->tarpos >= s - 3)
 			ra(a);
-		if (c >= p1)
+        if (*b && (*b)->size > 1 && (*a)->tarpos <= p1)
 		{
-			p1 += ((*a)->size - 1) / 2;
-			p2 += ((*a)->size - 1) / 2;
-		}	
-	}
+            pb(a, b);
+			rb(b);
+			p1++;
+		}
+        else if ((*a)->tarpos < p1 + p2)
+        {
+		    pb(a, b);
+			p1++;
+		}
+        else
+            ra(a); 
+    }
 }
-// void    push_chunks(t_stack **a, t_stack **b)
-// {
-//     int            p1;
-//     int             lastp1;
-//     int            p2;
-
-//     p1 = ((*a)->size - 1) / 3;
-//     p2 = p1 / 2;
-//     lastp1 = -1;
-//     while ((*a)->size > 3)
-//     {
-//         if (*b && (*b)->size > 1 && (*b)->tarpos >= lastp1 && (*b)->tarpos <= p2)
-//             rb(b);
-//         if ((*a)->tarpos < p1)
-//             pb(a, b);
-//         else
-//             ra(a);
-//         if ((*b)->size == p1)
-//         {
-//             lastp1 = p1;
-//             p1 += ((*a)->size - 1) / 2;
-//  			p2 += ((*a)->size - 1) / 2;
-//         }    
-//     }
-// }
 
 int	is_sorted(t_stack **a)
 {
@@ -149,32 +124,10 @@ void	push_back(t_stack **a, t_stack **b)
     a_bot = bottom_a(a);
     while (b && *b)
     {
-        if (*b && locate_pb(a, b) == 1)
-        {
-            while (*b && (*b)->tarpos != (*a)->tarpos - 1)
-            {
-                if (a_bot == bottom_a(a) || (*b)->tarpos > bottom_a(a))
-                {
-                    pa(a, b);
-                    ra(a);
-                }
-                else
-                    rb(b);
-            }
-        }
-        else if (*b && locate_pb(a, b) == 0)
-        {
-            while (*b && (*b)->tarpos != (*a)->tarpos - 1)
-            {
-                if (a_bot == bottom_a(a) || (*b)->tarpos > bottom_a(a))
-                {
-                    pa(a, b);
-                    ra(a);
-                }
-                else
-                    rrb(b);
-            }
-        }
+		if (*b && locate_pb(a, b) == 1)
+        	rot_push(a, b, a_bot);
+		else if (*b && locate_pb(a, b) == 0)
+			revrot_push(a, b, a_bot);
         while((*b) && (*b)->tarpos == (*a)->tarpos - 1)
             pa(a, b);
         while (bottom_a(a) == (*a)->tarpos - 1)
