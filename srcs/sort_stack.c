@@ -6,86 +6,84 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 21:59:50 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/14 21:10:32 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/15 20:54:17 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void    set_tarpos(t_stack **stack)
+void	set_tarpos(t_stack **stack)
 {
-    int i;
-	int v;
-	int s;
-    t_stack *min;
-    t_stack *temp;
+	int		i;
+	int		v;
+	int		s;
+	t_stack	*min;
+	t_stack	*temp;
 
-    i = 0;
+	i = 0;
 	s = stack_size_setpos(stack);
-    while (--s >= 0)
-    {
-	    temp = *stack;
+	while (--s >= 0)
+	{
+		temp = *stack;
 		v = INT_MAX;
-	    while (temp)
-        {
+		while (temp)
+		{
 			if (v > temp->value && !(temp->set))
 			{
 				min = temp;
 				v = temp->value;
 			}
 			temp = temp->next;
-        }
+		}
 		min->tarpos = i;
 		min->set = 1;
 		i++;
 	}
 }
 
-void    push_chunks(t_stack **a, t_stack **b)
+void	push_chunks(t_stack **a, t_stack **b)
 {
-    int p1;
-    int p2;
+	int	p1;
+	int	p2;
 	int	s;
 
-    s = stack_size_setpos(a);
+	s = stack_size_setpos(a);
 	p1 = 0;
-    p2 = 30;
-    while ((*a)->size > 3)
-    {
+	p2 = 30;
+	while ((*a)->size > 3)
+	{
 		if ((*a)->tarpos >= s - 3)
 			ra(a);
-        if (*b && (*b)->size > 1 && (*a)->tarpos <= p1)
+		if (*b && (*b)->size > 1 && (*a)->tarpos <= p1)
 		{
-            pb(a, b);
+			pb(a, b);
 			rb(b);
 			p1++;
 		}
-        else if ((*a)->tarpos < p1 + p2)
-        {
-		    pb(a, b);
+		else if ((*a)->tarpos < p1 + p2)
+		{
+			pb(a, b);
 			p1++;
 		}
-        else
-            ra(a); 
-    }
+		else
+			ra(a); 
+	}
 }
 
 int	is_sorted(t_stack **a)
 {
 	t_stack	*temp;
-	int		f;
 	int		v;
-	
+
 	temp = *a;
-	f = 1;
 	while (temp->next)
 	{
 		v = temp->next->value;
 		if (v < temp->value)
-			f = 0;
+			return (1);
 		temp = temp->next;
 	}
-	return (f);
+	return (0);
 }
 
 void	lil_sort(t_stack **a)
@@ -119,18 +117,18 @@ void	lil_sort(t_stack **a)
 
 void	push_back(t_stack **a, t_stack **b)
 {
-    int    a_bot;
+	int	a_bot;
 
-    a_bot = bottom_a(a);
-    while (b && *b)
-    {
+	a_bot = bottom_a(a);
+	while (b && *b)
+	{
 		if (*b && locate_pb(a, b) == 1)
-        	rot_push(a, b, a_bot);
+			rot_push(a, b, a_bot);
 		else if (*b && locate_pb(a, b) == 0)
 			revrot_push(a, b, a_bot);
-        while((*b) && (*b)->tarpos == (*a)->tarpos - 1)
-            pa(a, b);
-        while (bottom_a(a) == (*a)->tarpos - 1)
-            rra(a);
-    }
+		while ((*b) && (*b)->tarpos == (*a)->tarpos - 1)
+			pa(a, b);
+		while (bottom_a(a) == (*a)->tarpos - 1)
+			rra(a);
+	}
 }

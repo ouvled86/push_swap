@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 23:35:10 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/04 17:45:40 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/15 22:03:23 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,16 @@ int	ft_atoi(const char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		tmp = n * 10 + (str[i] - '0');
-		if (n > tmp && sign == 1)
-			return (-1);
-		if (n > tmp && sign == -1)
-			return (0);
+		if (n > tmp)
+		{
+			err_func(NULL, NULL);
+		}
 		n = tmp;
 		i++;
+	}
+	if (str[i] == '+' || str[i] == '-' || n > INT_MAX || n < INT_MIN)
+	{
+		err_func(NULL, NULL);
 	}
 	return (sign * n);
 }

@@ -12,23 +12,42 @@
 
 #include "../includes/push_swap.h"
 
-int main(int argc, char **argv)
+void	push_swap(t_stack **a, t_stack **b, int size)
 {
-    t_stack *a;
-    t_stack *b;
+	if (size > 3)
+	{
+		set_tarpos(a);
+		push_chunks(a, b);
+		lil_sort(a);
+		push_back(a, b);
+	}
+	if (size == 3)
+	{
+		set_tarpos(a);
+		lil_sort(a);
+	}
+	if (size == 2)
+		sa(a);
+	if (size == 1)
+		exit (0);
+}
 
-    a = NULL;
-    b = NULL;
-    if ((argc == 1) || (argc == 2 && !argv[1]))
-        return 1;
-    if (argc >= 2)
-        argv = ft_split(argv, ' ');
-    ini_stack(&a, argv);
-    if (is_sorted(&a))
-        exit(0);
-    set_tarpos(&a);
-    push_chunks(&a, &b);
-    lil_sort(&a);
-    push_back(&a, &b);
-    return 0;
+int	main(int argc, char **argv)
+{
+	t_stack	*a;
+	t_stack	*b;
+
+	a = NULL;
+	b = NULL;
+	if ((argc == 1) || (argc == 2 && !argv[1]))
+		return (1);
+	if (argc >= 2)
+		argv = ft_split(argv, ' ');
+	ini_stack(&a, argv);
+	if (!a)
+		return (30);
+	if (is_sorted(&a) == 0)
+		exit(0);
+	push_swap(&a, &b, a->size);
+	return (0);
 }

@@ -58,7 +58,7 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 %.o : %.c libft.h
-	cc $(CFLAGS) -c $< -o $@
+	cc -g $(CFLAGS) -c $< -o $@
 
 $(NAME) : $(OBJ) $(PRF_OBJ)
 	ar rcs $(NAME) $(OBJ) $(PRF_OBJ)

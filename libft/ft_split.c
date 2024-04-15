@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:12:59 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/04 17:45:40 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/15 21:48:14 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,16 @@ static int	check(char **str, char c)
 		i = 0;
 		while (str[j][i])
 		{
-			if ((str[j][i] >= '0' && str[j][i] <= '9') || str[j][i] == '-')
+			if (ft_isdigit_signed(str[j][i]))
 				occurances++;
 			else
-				return (printf("Error\n"), -1);				
-			while ((str[j][i] >= '0' && str[j][i] <= '9') || str[j][i] == '-')
+				return (write(2, "Error\n", 6), -1);
+			while (ft_isdigit_signed(str[j][i]))
 				i++;
 			if (str[j][i] == c)
 				i++;
-			if (!((str[j][i] >= '0' && str[j][i] <= '9') || str[j][i] == '-') && str[j][i])
-				return (printf("Error\n"), exit(1), -1);				
+			if (!(ft_isdigit_signed(str[j][i])) && str[j][i])
+				return (write(2, "Error\n", 6), exit(1), -1);
 		}
 		j++;
 	}
@@ -79,18 +79,22 @@ static char	*extract(int *i, char *s, char c)
 	}
 	res[j] = '\0';
 	while (s[*i] && s[*i] == c)
-        (*i)++;
+		(*i)++;
 	return (res);
 }
 
-void	extract_all(int *i, int *j, int k, int o, char **s, char **r)
+void	extract_all(int *i, int k, char **s, char **r)
 {
-	while (*j < o && s[k][*i])
+	static int	j;
+	int			occs;
+
+	occs = check(s, ' ');
+	while (j < occs && s[k][*i])
 	{
-		r[*j] = extract(i, s[k], ' ');
-		if (r[*j] == NULL)
+		r[j] = extract(i, s[k], ' ');
+		if (r[j] == NULL)
 			r = freemem(r);
-		(*j)++;
+		j++;
 	}
 }
 
@@ -113,7 +117,7 @@ char	**ft_split(char **s, char c)
 	while (s[k])
 	{
 		i = 0;
-		extract_all(&i, &j, k, occurances, s, result);
+		extract_all(&i, k, s, result);
 		k++;
 	}
 	result[occurances] = NULL;

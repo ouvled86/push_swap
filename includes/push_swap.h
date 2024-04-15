@@ -18,53 +18,52 @@
 # include <limits.h>
 # include "libft.h"
 
-typedef struct  s_stack
+typedef struct s_stack
 {
-    int             value;
-    int             pos;
-    int             tarpos;
-    int             size;
-    int             first_half;
-    int             set;
-    struct s_stack  *next;
-    struct s_stack  *prev;
-    struct s_stack  *target;
-}               t_stack;
+	int				value;
+	int				pos;
+	int				tarpos;
+	int				size;
+	int				first_half;
+	int				set;
+	struct s_stack	*next;
+	struct s_stack	*prev;
+	struct s_stack	*target;
+}					t_stack;
 
-typedef struct	s_data
+typedef struct s_data
 {
-    int	value;
-	int tarpos;
+	int			value;
+	int			tarpos;
 }				t_data;
 
+t_stack	*last_node(t_stack *stack);
+int		stack_size_setpos(t_stack **stack);
+void	ini_stack(t_stack **a, char **argv);
 
-t_stack *last_node(t_stack *stack);
-int     stack_size_setpos(t_stack **stack);
-void    ini_stack(t_stack **a, char **argv);
+void	err_func(t_stack **stack, char **argv);
 
-void    err_func(t_stack **stack, char **argv, char *display_msg);
+void	pa(t_stack **a, t_stack **b);
+void	pb(t_stack **a, t_stack **b);
+void	sa(t_stack **a);
+void	sb(t_stack **b);
+void	ss(t_stack **a, t_stack **b);
+void	ra(t_stack **a);
+void	rb(t_stack **b);
+void	rr(t_stack **a, t_stack **b);
+void	rra(t_stack **a);
+void	rrb(t_stack **b);
+void	rrr(t_stack **a, t_stack **b);
 
-void    pa(t_stack **a, t_stack **b);
-void    pb(t_stack **a, t_stack **b);
-void    sa(t_stack **a);
-void    sb(t_stack **b);
-void    ss(t_stack **a, t_stack **b);
-void    ra(t_stack **a);
-void    rb(t_stack **b);
-void    rr(t_stack **a, t_stack **b);
-void    rra(t_stack **a);
-void    rrb(t_stack **b);
-void    rrr(t_stack **a, t_stack **b);
+void	set_tarpos(t_stack **stack);
+void	push_chunks(t_stack **a, t_stack **b);
+int		is_sorted(t_stack **a);
+void	lil_sort(t_stack **a);
+void	push_back(t_stack **a, t_stack **b);
 
-void    set_tarpos(t_stack **stack);
-void    push_chunks(t_stack **a, t_stack **b);
-int     is_sorted(t_stack **a);
-void    lil_sort(t_stack **a);
-void    push_back(t_stack **a, t_stack **b);
-
-int     locate_pb(t_stack **a, t_stack **b);
-int     bottom_a(t_stack **a);
-void    rot_push(t_stack **a, t_stack **b, int a_bot);
-void    revrot_push(t_stack **a, t_stack **b, int a_bot);
+int		locate_pb(t_stack **a, t_stack **b);
+int		bottom_a(t_stack **a);
+void	rot_push(t_stack **a, t_stack **b, int a_bot);
+void	revrot_push(t_stack **a, t_stack **b, int a_bot);
 
 #endif
