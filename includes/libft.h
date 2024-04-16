@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 17:11:28 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/15 21:58:08 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/16 18:12:12 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <limits.h>
+# include "push_swap.h"
 
 typedef struct s_list
 {

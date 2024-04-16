@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 21:59:50 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/15 20:54:17 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/16 23:06:59 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,13 @@ void	push_chunks(t_stack **a, t_stack **b)
 	p2 = 30;
 	while ((*a)->size > 3)
 	{
-		if ((*a)->tarpos >= s - 3)
-			ra(a);
-		if (*b && (*b)->size > 1 && (*a)->tarpos <= p1)
+		if (*b && (*b)->size > 1 && (*a)->tarpos < s - 3 && (*a)->tarpos <= p1)
 		{
 			pb(a, b);
 			rb(b);
 			p1++;
 		}
-		else if ((*a)->tarpos < p1 + p2)
+		if ((*a)->tarpos < p1 + p2 && (*a)->tarpos < s - 3)
 		{
 			pb(a, b);
 			p1++;
@@ -122,12 +120,14 @@ void	push_back(t_stack **a, t_stack **b)
 	a_bot = bottom_a(a);
 	while (b && *b)
 	{
-		if (*b && locate_pb(a, b) == 1)
+		if (b && *b && *b && locate_pb(a, b) == 1)
 			rot_push(a, b, a_bot);
-		else if (*b && locate_pb(a, b) == 0)
+		else if (b && *b && locate_pb(a, b) == 0)
 			revrot_push(a, b, a_bot);
-		while ((*b) && (*b)->tarpos == (*a)->tarpos - 1)
+		while (b && *b && (*b)->tarpos == (*a)->tarpos - 1)
+		{
 			pa(a, b);
+		}
 		while (bottom_a(a) == (*a)->tarpos - 1)
 			rra(a);
 	}

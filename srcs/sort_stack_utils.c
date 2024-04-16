@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 20:54:26 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/15 20:53:23 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/16 22:10:35 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,18 @@ int	locate_pb(t_stack **a, t_stack **b)
 {
 	t_stack	*temp;
 
-	temp = *b;
-	while (temp && temp->tarpos != (*a)->tarpos - 1)
-		temp = temp->next;
-	return (temp->first_half);
+	// if (temp)
+	// 	ft_printf("num is %d its tarpos: %d\n", temp->value, temp->tarpos);
+	// if ((*b)->size == 1)
+	// 	return (1);
+	if (*b)
+	{
+		temp = *b;
+		while (temp && temp->tarpos != (*a)->tarpos - 1)
+			temp = temp->next;
+		return (temp->first_half);
+	}
+	return (-1);
 }
 
 int	bottom_a(t_stack **a)
@@ -39,7 +47,7 @@ void	rot_push(t_stack **a, t_stack **b, int a_bot)
 			pa(a, b);
 			ra(a);
 		}
-		else
+		else if (a_bot == bottom_a(a) || (*b)->tarpos < bottom_a(a))
 			rb(b);
 	}
 }
@@ -53,7 +61,7 @@ void	revrot_push(t_stack **a, t_stack **b, int a_bot)
 			pa(a, b);
 			ra(a);
 		}
-		else
+		else if (a_bot == bottom_a(a) || (*b)->tarpos < bottom_a(a))
 			rrb(b);
 	}
 }

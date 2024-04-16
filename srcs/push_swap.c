@@ -21,14 +21,14 @@ void	push_swap(t_stack **a, t_stack **b, int size)
 		lil_sort(a);
 		push_back(a, b);
 	}
-	if (size == 3)
+	else if (size == 3)
 	{
 		set_tarpos(a);
 		lil_sort(a);
 	}
-	if (size == 2)
+	else if (size == 2)
 		sa(a);
-	if (size == 1)
+	else if (size == 1)
 		exit (0);
 }
 
@@ -39,13 +39,13 @@ int	main(int argc, char **argv)
 
 	a = NULL;
 	b = NULL;
-	if ((argc == 1) || (argc == 2 && !argv[1]))
-		return (1);
+	if ((argc == 1) || (argc == 2 && !argv[1]) || !argv[1][0])
+		return (0);
 	if (argc >= 2)
 		argv = ft_split(argv, ' ');
 	ini_stack(&a, argv);
 	if (!a)
-		return (30);
+		return (1);
 	if (is_sorted(&a) == 0)
 		exit(0);
 	push_swap(&a, &b, a->size);

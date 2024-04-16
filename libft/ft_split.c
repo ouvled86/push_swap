@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:12:59 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/15 21:48:14 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/16 18:50:06 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ static int	check(char **str, char c)
 			if (ft_isdigit_signed(str[j][i]))
 				occurances++;
 			else
-				return (write(2, "Error\n", 6), -1);
+				err_func(NULL, NULL);
 			while (ft_isdigit_signed(str[j][i]))
 				i++;
 			if (str[j][i] == c)
 				i++;
 			if (!(ft_isdigit_signed(str[j][i])) && str[j][i])
-				return (write(2, "Error\n", 6), exit(1), -1);
+				err_func(NULL, NULL);
 		}
 		j++;
 	}
