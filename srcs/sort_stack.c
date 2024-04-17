@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 21:59:50 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/16 23:06:59 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/17 18:21:03 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,51 +65,6 @@ void	push_chunks(t_stack **a, t_stack **b)
 		}
 		else
 			ra(a); 
-	}
-}
-
-int	is_sorted(t_stack **a)
-{
-	t_stack	*temp;
-	int		v;
-
-	temp = *a;
-	while (temp->next)
-	{
-		v = temp->next->value;
-		if (v < temp->value)
-			return (1);
-		temp = temp->next;
-	}
-	return (0);
-}
-
-void	lil_sort(t_stack **a)
-{
-	int	v1;
-	int	v2;
-	int	v3;
-
-	v1 = (*a)->value;
-	v2 = (*a)->next->value;
-	v3 = (*a)->next->next->value;
-	if (v3 > v2 && v3 > v1 && v1 > v2)
-		sa(a);
-	else if (v1 > v2 && v1 > v3 && v2 > v3)
-	{
-		sa(a);
-		rra(a);
-	}
-	else if (v1 > v2 && v1 > v3 && v2 < v3)
-		ra(a);
-	else if (v1 > v3 && v2 > v1)
-		rra(a);
-	else if (v1 > v2 && v3 > v1)
-		sa(a);
-	else if (v1 < v2 && v3 < v2)
-	{
-		rra(a);
-		sa(a);
 	}
 }
 

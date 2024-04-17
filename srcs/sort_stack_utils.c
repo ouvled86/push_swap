@@ -6,20 +6,32 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 20:54:26 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/16 22:10:35 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/17 18:21:10 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+int	is_sorted(t_stack **a)
+{
+	t_stack	*temp;
+	int		v;
+
+	temp = *a;
+	while (temp->next)
+	{
+		v = temp->next->value;
+		if (v < temp->value)
+			return (1);
+		temp = temp->next;
+	}
+	return (0);
+}
+
 int	locate_pb(t_stack **a, t_stack **b)
 {
 	t_stack	*temp;
 
-	// if (temp)
-	// 	ft_printf("num is %d its tarpos: %d\n", temp->value, temp->tarpos);
-	// if ((*b)->size == 1)
-	// 	return (1);
 	if (*b)
 	{
 		temp = *b;

@@ -14,18 +14,19 @@
 
 void	push_swap(t_stack **a, t_stack **b, int size)
 {
-	if (size > 3)
+	set_tarpos(a);
+	if (size > 5)
 	{
-		set_tarpos(a);
 		push_chunks(a, b);
-		lil_sort(a);
+		sort_three(a);
 		push_back(a, b);
 	}
+	else if (size == 5)
+		sort_five(a, b);
+	else if (size == 4)
+		sort_four(a, b);
 	else if (size == 3)
-	{
-		set_tarpos(a);
-		lil_sort(a);
-	}
+		sort_three(a);
 	else if (size == 2)
 		sa(a);
 	else if (size == 1)

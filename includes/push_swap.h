@@ -55,13 +55,15 @@ void	rra(t_stack **a);
 void	rrb(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
 
+void	sort_three(t_stack **a);
+void	sort_four(t_stack **a, t_stack **b);
+void	sort_five(t_stack **a, t_stack **b);
+
 void	set_tarpos(t_stack **stack);
 void	push_chunks(t_stack **a, t_stack **b);
-int		is_sorted(t_stack **a);
-void	lil_sort(t_stack **a);
 void	push_back(t_stack **a, t_stack **b);
-void	push_back2(t_stack **a, t_stack **b);
 
+int		is_sorted(t_stack **a);
 int		locate_pb(t_stack **a, t_stack **b);
 int		bottom_a(t_stack **a);
 void	rot_push(t_stack **a, t_stack **b, int a_bot);
