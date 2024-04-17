@@ -45,7 +45,9 @@ SRC_BONUS = ft_lstnew_bonus.c \
 			ft_lstadd_front_bonus.c \
 			ft_lstmap_bonus.c
 
-PRF_SRC = ft_printf.c ft_printf_utils.c ft_printf_puts.c
+PRF_SRC =	ft_printf.c \
+			ft_printf_utils.c \
+			ft_printf_puts.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -57,20 +59,20 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-%.o : %.c libft.h
-	cc -g $(CFLAGS) -c $< -o $@
-
 $(NAME) : $(OBJ) $(PRF_OBJ)
 	ar rcs $(NAME) $(OBJ) $(PRF_OBJ)
 
 bonus: $(OBJ_BONUS)
 	ar rcs $(NAME) $(OBJ_BONUS)
 
+%.o : %.c libft.h
+	cc $(CFLAGS) -c $< -o $@
+
 clean:
-	rm -f $(OBJ) $(PRF_OBJ) $(OBJ_BONUS)
+	@rm -f $(OBJ) $(PRF_OBJ) $(OBJ_BONUS)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 

@@ -42,6 +42,7 @@ int		stack_size_setpos(t_stack **stack);
 void	ini_stack(t_stack **a, char **argv);
 
 void	err_func(t_stack **stack, char **argv);
+void	free_stack(t_stack **stack, char **argv);
 
 void	pa(t_stack **a, t_stack **b);
 void	pb(t_stack **a, t_stack **b);

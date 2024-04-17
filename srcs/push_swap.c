@@ -50,5 +50,6 @@ int	main(int argc, char **argv)
 	if (is_sorted(&a) == 0)
 		exit(0);
 	push_swap(&a, &b, a->size);
+	free_stack(&a, argv);
 	return (0);
 }

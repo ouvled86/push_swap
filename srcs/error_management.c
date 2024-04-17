@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 03:50:08 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/16 18:44:56 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/17 19:51:04 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,23 @@ void	err_func(t_stack **stack, char **argv)
 	if (argv && *argv)
 		argv = freemem(argv);
 	exit (1);
+}
+
+void	free_stack(t_stack **stack, char **argv)
+{
+	t_stack	*temp;
+
+	temp = NULL;
+	if (stack && *stack)
+	{
+		temp = *stack;
+		while (temp)
+		{
+			temp = temp->next;
+			free(*stack);
+			*stack = temp;
+		}
+	}
+	if (argv && *argv)
+		argv = freemem(argv);
 }
