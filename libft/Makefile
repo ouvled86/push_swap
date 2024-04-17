@@ -69,10 +69,10 @@ bonus: $(OBJ_BONUS)
 	cc $(CFLAGS) -c $< -o $@
 
 clean:
-	@rm -f $(OBJ) $(PRF_OBJ) $(OBJ_BONUS)
+	rm -f $(OBJ) $(PRF_OBJ) $(OBJ_BONUS)
 
 fclean: clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
