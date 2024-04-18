@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 03:49:06 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/18 19:20:14 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/18 21:55:12 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,24 @@ void	push(t_stack **stack, t_data *data)
 {
 	t_stack	*node;
 
-	node = malloc(sizeof(t_stack));
-	node->value = data->value;
-	node->tarpos = data->tarpos;
-	node->next = NULL;
-	node->prev = NULL;
-	if (*stack)
+	if (*stack && data)
 	{
-		node->next = *stack;
-		(*stack)->prev = node;
+		node = malloc(sizeof(t_stack));
+		if (!node)
+			return ;
+		node->value = data->value;
+		node->tarpos = data->tarpos;
+		node->next = NULL;
+		node->prev = NULL;
+		if (*stack)
+		{
+			node->next = *stack;
+			(*stack)->prev = node;
+		}
+		*stack = node;
 	}
-	*stack = node;
+	if (data)
+		free(data);
 }
 
 void	pa(t_stack **a, t_stack **b, int f)

@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 21:41:10 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/18 19:43:19 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/18 21:55:36 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,12 @@ static void	apply_op(t_stack **a, t_stack **b, char *op)
 	free(op);
 }
 
-void check(void)
-{
-	system("leaks checker");
-}
-
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
 	char	*op;
 
-	atexit(check);
 	a = NULL;
 	b = NULL;
 	if ((argc == 1) || (argc == 2 && !argv[1]) || !argv[1][0])
