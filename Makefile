@@ -44,7 +44,7 @@ bonus: $(BONUS_NAME)
 
 $(BONUS_NAME): $(OBJS_BONUS) $(LIBFTPRINTF) includes/checker.h
 	@echo "Compiling checker..."
-	@cc -g $(CFLAGS) -o $(BONUS_NAME) $(OBJS_BONUS) $(LIBFTPRINTF)
+	@cc $(CFLAGS) -o $(BONUS_NAME) $(OBJS_BONUS) $(LIBFTPRINTF)
 
 $(LIBFTPRINTF): includes/libft.h
 	@echo "Archiving libftprintf..."
