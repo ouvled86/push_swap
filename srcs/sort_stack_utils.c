@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 20:54:26 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/17 18:21:10 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/18 19:07:33 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ int	is_sorted(t_stack **a)
 	t_stack	*temp;
 	int		v;
 
+	if (!*a)
+	{
+		ft_printf("KO\n");
+		exit(0);
+	}
 	temp = *a;
 	while (temp->next)
 	{
@@ -56,11 +61,11 @@ void	rot_push(t_stack **a, t_stack **b, int a_bot)
 	{
 		if (a_bot == bottom_a(a) || (*b)->tarpos > bottom_a(a))
 		{
-			pa(a, b);
-			ra(a);
+			pa(a, b, 0);
+			ra(a, 0);
 		}
 		else if (a_bot == bottom_a(a) || (*b)->tarpos < bottom_a(a))
-			rb(b);
+			rb(b, 0);
 	}
 }
 
@@ -70,10 +75,10 @@ void	revrot_push(t_stack **a, t_stack **b, int a_bot)
 	{
 		if (a_bot == bottom_a(a) || (*b)->tarpos > bottom_a(a))
 		{
-			pa(a, b);
-			ra(a);
+			pa(a, b, 0);
+			ra(a, 0);
 		}
 		else if (a_bot == bottom_a(a) || (*b)->tarpos < bottom_a(a))
-			rrb(b);
+			rrb(b, 0);
 	}
 }

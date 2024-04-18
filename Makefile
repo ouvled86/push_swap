@@ -6,24 +6,25 @@ CFLAGS = -Wall -Wextra -Werror
 
 SRCS =	srcs/push_swap.c \
 		srcs/stack_utils.c \
-		srcs/error_management.c \
 		srcs/push_op.c \
-		srcs/reverse_rotate_op.c \
-		srcs/rotate_op.c \
 		srcs/swap_op.c \
+		srcs/rotate_op.c \
 		srcs/sort_stack.c \
+		srcs/error_management.c \
 		srcs/sort_stack_utils.c \
+		srcs/reverse_rotate_op.c \
 		srcs/sort_small_stack.c
 
 SRCS_BONUS =	bonus/checker.c \
+				srcs/swap_op.c \
+				srcs/push_op.c \
+				bonus/free_mem.c \
+				srcs/rotate_op.c \
+				srcs/sort_stack.c \
 				srcs/stack_utils.c \
 				srcs/error_management.c \
-				srcs/push_op.c \
-				srcs/reverse_rotate_op.c \
-				srcs/rotate_op.c \
-				srcs/swap_op.c \
-				srcs/sort_stack.c \
 				srcs/sort_stack_utils.c \
+				srcs/reverse_rotate_op.c \
 				bonus/get_next_line/get_next_line.c \
 				bonus/get_next_line/get_next_line_utils.c
 
@@ -41,7 +42,7 @@ $(NAME): $(OBJS) $(LIBFTPRINTF)
 
 bonus: $(BONUS_NAME)
 
-$(BONUS_NAME): $(OBJS_BONUS) $(LIBFTPRINTF)
+$(BONUS_NAME): $(OBJS_BONUS) $(LIBFTPRINTF) includes/checker.h
 	@echo "Compiling checker..."
 	@cc -g $(CFLAGS) -o $(BONUS_NAME) $(OBJS_BONUS) $(LIBFTPRINTF)
 

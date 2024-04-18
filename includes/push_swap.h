@@ -28,7 +28,6 @@ typedef struct s_stack
 	int				set;
 	struct s_stack	*next;
 	struct s_stack	*prev;
-	struct s_stack	*target;
 }					t_stack;
 
 typedef struct s_data
@@ -44,17 +43,17 @@ void	ini_stack(t_stack **a, char **argv);
 void	err_func(t_stack **stack, char **argv);
 void	free_stack(t_stack **stack, char **argv);
 
-void	pa(t_stack **a, t_stack **b);
-void	pb(t_stack **a, t_stack **b);
-void	sa(t_stack **a);
-void	sb(t_stack **b);
-void	ss(t_stack **a, t_stack **b);
-void	ra(t_stack **a);
-void	rb(t_stack **b);
-void	rr(t_stack **a, t_stack **b);
-void	rra(t_stack **a);
-void	rrb(t_stack **b);
-void	rrr(t_stack **a, t_stack **b);
+void	pa(t_stack **a, t_stack **b, int f);
+void	pb(t_stack **a, t_stack **b, int f);
+void	sa(t_stack **a, int f);
+void	sb(t_stack **b, int f);
+void	ss(t_stack **a, t_stack **b, int f);
+void	ra(t_stack **a, int f);
+void	rb(t_stack **b, int f);
+void	rr(t_stack **a, t_stack **b, int f);
+void	rra(t_stack **a, int f);
+void	rrb(t_stack **b, int f);
+void	rrr(t_stack **a, t_stack **b, int f);
 
 void	sort_three(t_stack **a);
 void	sort_four(t_stack **a, t_stack **b);

@@ -28,7 +28,7 @@ void	push_swap(t_stack **a, t_stack **b, int size)
 	else if (size == 3)
 		sort_three(a);
 	else if (size == 2)
-		sa(a);
+		sa(a, 0);
 	else if (size == 1)
 		exit (0);
 }

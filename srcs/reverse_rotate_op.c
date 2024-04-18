@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 17:33:47 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/15 20:56:56 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/18 19:17:04 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,24 @@ void	rev_rot(t_stack **stack)
 	(*stack)->size = stack_size_setpos(stack);
 }
 
-void	rra(t_stack **a)
+void	rra(t_stack **a, int f)
 {
 	rev_rot(a);
-	ft_printf("rra\n");
+	if (f == 0)
+		ft_printf("rra\n");
 }
 
-void	rrb(t_stack **b)
+void	rrb(t_stack **b, int f)
 {
 	rev_rot(b);
-	ft_printf("rrb\n");
+	if (f == 0)
+		ft_printf("rrb\n");
 }
 
-void	rrr(t_stack **a, t_stack **b)
+void	rrr(t_stack **a, t_stack **b, int f)
 {
 	rev_rot(a);
 	rev_rot(b);
-	ft_printf("rrr\n");
+	if (f == 0)
+		ft_printf("rrr\n");
 }

@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 03:49:06 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/15 20:50:50 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/18 19:20:14 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,24 +49,26 @@ void	push(t_stack **stack, t_data *data)
 	*stack = node;
 }
 
-void	pa(t_stack **a, t_stack **b)
+void	pa(t_stack **a, t_stack **b, int f)
 {
 	if (!*b)
 		return ;
 	push(a, pop(b));
-	ft_printf("pa\n");
+	if (f == 0)
+		ft_printf("pa\n");
 	if (*a)
 		(*a)->size = stack_size_setpos(a);
 	if (*b)
 		(*b)->size = stack_size_setpos(b);
 }
 
-void	pb(t_stack **a, t_stack **b)
+void	pb(t_stack **a, t_stack **b, int f)
 {
 	if (!*a)
 		return ;
 	push(b, pop(a));
-	ft_printf("pb\n");
+	if (f == 0)
+		ft_printf("pb\n");
 	if (*a)
 		(*a)->size = stack_size_setpos(a);
 	if (*b)

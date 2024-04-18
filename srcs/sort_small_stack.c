@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 18:12:44 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/17 19:00:13 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/18 18:58:28 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,22 @@ void	sort_three(t_stack **a)
 	v2 = (*a)->next->value;
 	v3 = (*a)->next->next->value;
 	if (v3 > v2 && v3 > v1 && v1 > v2)
-		sa(a);
+		sa(a, 0);
 	else if (v1 > v2 && v1 > v3 && v2 > v3)
 	{
-		sa(a);
-		rra(a);
+		sa(a, 0);
+		rra(a, 0);
 	}
 	else if (v1 > v2 && v1 > v3 && v2 < v3)
-		ra(a);
+		ra(a, 0);
 	else if (v1 > v3 && v2 > v1)
-		rra(a);
+		rra(a, 0);
 	else if (v1 > v2 && v3 > v1)
-		sa(a);
+		sa(a, 0);
 	else if (v1 < v2 && v3 < v2)
 	{
-		rra(a);
-		sa(a);
+		rra(a, 0);
+		sa(a, 0);
 	}
 }
 
@@ -67,16 +67,16 @@ void	sort_four(t_stack **a, t_stack **b)
 	if (t->first_half == 1)
 	{
 		while ((*a)->value != find_min(a))
-			ra(a);
+			ra(a, 0);
 	}
 	else
 	{
 		while ((*a)->value != find_min(a))
-			rra(a);
+			rra(a, 0);
 	}
-	pb(a, b);
+	pb(a, b, 0);
 	sort_three(a);
-	pa(a, b);
+	pa(a, b, 0);
 }
 
 void	sort_five(t_stack **a, t_stack **b)
@@ -89,14 +89,14 @@ void	sort_five(t_stack **a, t_stack **b)
 	if (t->first_half == 1)
 	{
 		while ((*a)->value != find_min(a))
-			ra(a);
+			ra(a, 0);
 	}
 	else
 	{
 		while ((*a)->value != find_min(a))
-			rra(a);
+			rra(a, 0);
 	}
-	pb(a, b);
+	pb(a, b, 0);
 	sort_four(a, b);
-	pa(a, b);
+	pa(a, b, 0);
 }

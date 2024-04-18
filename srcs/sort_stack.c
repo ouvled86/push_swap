@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 21:59:50 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/17 18:21:03 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/18 19:10:06 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,17 @@ void	push_chunks(t_stack **a, t_stack **b)
 	{
 		if (*b && (*b)->size > 1 && (*a)->tarpos < s - 3 && (*a)->tarpos <= p1)
 		{
-			pb(a, b);
-			rb(b);
+			pb(a, b, 0);
+			rb(b, 0);
 			p1++;
 		}
 		if ((*a)->tarpos < p1 + p2 && (*a)->tarpos < s - 3)
 		{
-			pb(a, b);
+			pb(a, b, 0);
 			p1++;
 		}
 		else
-			ra(a); 
+			ra(a, 0); 
 	}
 }
 
@@ -81,9 +81,9 @@ void	push_back(t_stack **a, t_stack **b)
 			revrot_push(a, b, a_bot);
 		while (b && *b && (*b)->tarpos == (*a)->tarpos - 1)
 		{
-			pa(a, b);
+			pa(a, b, 0);
 		}
 		while (bottom_a(a) == (*a)->tarpos - 1)
-			rra(a);
+			rra(a, 0);
 	}
 }

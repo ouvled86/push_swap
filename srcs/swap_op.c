@@ -6,7 +6,7 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 17:32:43 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/15 20:56:45 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/04/18 19:20:39 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,24 @@ void	swap(t_stack **stack)
 	stack_size_setpos(stack);
 }
 
-void	sa(t_stack **a)
+void	sa(t_stack **a, int f)
 {
 	swap(a);
-	ft_printf("sa\n");
+	if (f == 0)
+		ft_printf("sa\n");
 }
 
-void	sb(t_stack **b)
+void	sb(t_stack **b, int f)
 {
 	swap(b);
-	ft_printf("sb\n");
+	if (f == 0)
+		ft_printf("sb\n");
 }
 
-void	ss(t_stack **a, t_stack **b)
+void	ss(t_stack **a, t_stack **b, int f)
 {
 	swap(a);
 	swap(b);
-	ft_printf("ss\n");
+	if (f == 0)
+		ft_printf("ss\n");
 }

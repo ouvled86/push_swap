@@ -1,21 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   free_mem.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 21:37:07 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/18 19:33:22 by ouel-bou         ###   ########.fr       */
+/*   Created: 2024/04/18 19:28:19 by ouel-bou          #+#    #+#             */
+/*   Updated: 2024/04/18 19:45:28 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#include "../includes/checker.h"
 
-# include "push_swap.h"
-# include "get_next_line.h"
+void	free_checker_mem(t_stack **a, t_stack **b, char **argv)
+{
+	t_stack	*temp;
 
-void	free_checker_mem(t_stack **a, t_stack **b, char **argv);
-
-#endif
+	temp = NULL;
+	if (*a)
+	{
+		temp = *a;
+		while (temp)
+		{
+			temp = temp->next;
+			free(*a);
+			*a = temp;
+		}
+	}
+	if (*b)
+	{
+		temp = *b;
+		while (temp)
+		{
+			temp = temp->next;
+			free(*b);
+			*b = temp;
+		}
+	}
+	if (argv && *argv)
+		argv = freemem(argv);
+}
