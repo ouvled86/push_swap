@@ -1,44 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 21:41:10 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/18 21:57:51 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/05/06 13:22:02 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/checker.h"
+#include "../includes/checker_bonus.h"
 
 static void	apply_op(t_stack **a, t_stack **b, char *op)
 {
 	if (ft_strncmp("pa\n", op, 3) == 0)
-		pa(a, b, 1);
+		pa(a, b);
 	else if (ft_strncmp("pb\n", op, 3) == 0)
-		pb(a, b, 1);
+		pb(a, b);
 	else if (ft_strncmp("sa\n", op, 3) == 0)
-		sa(a, 1);
+		sa(a);
 	else if (ft_strncmp("sb\n", op, 3) == 0)
-		sb(b, 1);
+		sb(b);
 	else if (ft_strncmp("ss\n", op, 3) == 0)
-		ss(a, b, 1);
+		ss(a, b);
 	else if (ft_strncmp("ra\n", op, 3) == 0)
-		ra(a, 1);
+		ra(a);
 	else if (ft_strncmp("rb\n", op, 3) == 0)
-		rb(b, 1);
+		rb(b);
 	else if (ft_strncmp("rr\n", op, 3) == 0)
-		rr(a, b, 1);
+		rr(a, b);
 	else if (ft_strncmp("rra\n", op, 4) == 0)
-		rra(a, 1);
+		rra(a);
 	else if (ft_strncmp("rrb\n", op, 4) == 0)
-		rrb(b, 1);
+		rrb(b);
 	else if (ft_strncmp("rrr\n", op, 4) == 0)
-		rrr(a, b, 1);
+		rrr(a, b);
 	else
 		err_func(NULL, NULL);
-	free(op);
 }
 
 int	main(int argc, char **argv)
@@ -62,10 +61,9 @@ int	main(int argc, char **argv)
 		apply_op(&a, &b, op);
 		op = get_next_line(0);
 	}
-	if (is_sorted(&a) == 0 && !b)
+	if (is_sorted(&a) == 0)
 		ft_printf("OK\n");
-	else if ((is_sorted(&a) == 1 || b))
+	else
 		ft_printf("KO\n");
-	free_checker_mem(&a, &b, argv);
 	return (0);
 }

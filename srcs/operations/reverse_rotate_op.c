@@ -6,11 +6,11 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 17:33:47 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/18 19:17:04 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/05/06 13:26:46 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 void	rev_rot(t_stack **stack)
 {
@@ -29,24 +29,21 @@ void	rev_rot(t_stack **stack)
 	(*stack)->size = stack_size_setpos(stack);
 }
 
-void	rra(t_stack **a, int f)
+void	rra(t_stack **a)
 {
 	rev_rot(a);
-	if (f == 0)
-		ft_printf("rra\n");
+	ft_printf("rra\n");
 }
 
-void	rrb(t_stack **b, int f)
+void	rrb(t_stack **b)
 {
 	rev_rot(b);
-	if (f == 0)
-		ft_printf("rrb\n");
+	ft_printf("rrb\n");
 }
 
-void	rrr(t_stack **a, t_stack **b, int f)
+void	rrr(t_stack **a, t_stack **b)
 {
 	rev_rot(a);
 	rev_rot(b);
-	if (f == 0)
-		ft_printf("rrr\n");
+	ft_printf("rrr\n");
 }

@@ -6,11 +6,11 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 17:33:52 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/18 19:18:29 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/05/06 13:26:46 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 void	rot(t_stack **stack)
 {
@@ -18,7 +18,7 @@ void	rot(t_stack **stack)
 	t_stack	*holder;
 
 	if (!*stack || !(*stack)->next)
-		return ;
+		exit(1);
 	holder = *stack;
 	temp = last_node(*stack);
 	holder->prev = temp;
@@ -29,24 +29,21 @@ void	rot(t_stack **stack)
 	(*stack)->size = stack_size_setpos(stack);
 }
 
-void	ra(t_stack **a, int f)
+void	ra(t_stack **a)
 {
 	rot(a);
-	if (f == 0)
-		ft_printf("rb\n");
+	ft_printf("ra\n");
 }
 
-void	rb(t_stack **b, int f)
+void	rb(t_stack **b)
 {
 	rot(b);
-	if (f == 0)
-		ft_printf("rb\n");
+	ft_printf("rb\n");
 }
 
-void	rr(t_stack **a, t_stack **b, int f)
+void	rr(t_stack **a, t_stack **b)
 {
 	rot(a);
 	rot(b);
-	if (f == 0)
-		ft_printf("rr\n");
+	ft_printf("rr\n");
 }

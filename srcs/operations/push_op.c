@@ -6,11 +6,11 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 03:49:06 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/18 21:55:12 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/05/06 13:26:46 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 t_data	*pop(t_stack **stack)
 {
@@ -36,46 +36,37 @@ void	push(t_stack **stack, t_data *data)
 {
 	t_stack	*node;
 
-	if (*stack && data)
+	node = malloc(sizeof(t_stack));
+	node->value = data->value;
+	node->tarpos = data->tarpos;
+	node->next = NULL;
+	node->prev = NULL;
+	if (*stack)
 	{
-		node = malloc(sizeof(t_stack));
-		if (!node)
-			return ;
-		node->value = data->value;
-		node->tarpos = data->tarpos;
-		node->next = NULL;
-		node->prev = NULL;
-		if (*stack)
-		{
-			node->next = *stack;
-			(*stack)->prev = node;
-		}
-		*stack = node;
+		node->next = *stack;
+		(*stack)->prev = node;
 	}
-	if (data)
-		free(data);
+	*stack = node;
 }
 
-void	pa(t_stack **a, t_stack **b, int f)
+void	pa(t_stack **a, t_stack **b)
 {
 	if (!*b)
 		return ;
 	push(a, pop(b));
-	if (f == 0)
-		ft_printf("pa\n");
+	ft_printf("pa\n");
 	if (*a)
 		(*a)->size = stack_size_setpos(a);
 	if (*b)
 		(*b)->size = stack_size_setpos(b);
 }
 
-void	pb(t_stack **a, t_stack **b, int f)
+void	pb(t_stack **a, t_stack **b)
 {
 	if (!*a)
 		return ;
 	push(b, pop(a));
-	if (f == 0)
-		ft_printf("pb\n");
+	ft_printf("pb\n");
 	if (*a)
 		(*a)->size = stack_size_setpos(a);
 	if (*b)

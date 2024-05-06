@@ -6,22 +6,17 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 20:54:26 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/18 19:07:33 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/05/06 13:26:45 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 int	is_sorted(t_stack **a)
 {
 	t_stack	*temp;
 	int		v;
 
-	if (!*a)
-	{
-		ft_printf("KO\n");
-		exit(0);
-	}
 	temp = *a;
 	while (temp->next)
 	{
@@ -61,11 +56,11 @@ void	rot_push(t_stack **a, t_stack **b, int a_bot)
 	{
 		if (a_bot == bottom_a(a) || (*b)->tarpos > bottom_a(a))
 		{
-			pa(a, b, 0);
-			ra(a, 0);
+			pa(a, b);
+			ra(a);
 		}
 		else if (a_bot == bottom_a(a) || (*b)->tarpos < bottom_a(a))
-			rb(b, 0);
+			rb(b);
 	}
 }
 
@@ -75,10 +70,10 @@ void	revrot_push(t_stack **a, t_stack **b, int a_bot)
 	{
 		if (a_bot == bottom_a(a) || (*b)->tarpos > bottom_a(a))
 		{
-			pa(a, b, 0);
-			ra(a, 0);
+			pa(a, b);
+			ra(a);
 		}
 		else if (a_bot == bottom_a(a) || (*b)->tarpos < bottom_a(a))
-			rrb(b, 0);
+			rrb(b);
 	}
 }

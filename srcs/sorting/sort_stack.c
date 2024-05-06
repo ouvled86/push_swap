@@ -6,11 +6,11 @@
 /*   By: ouel-bou <ouel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 21:59:50 by ouel-bou          #+#    #+#             */
-/*   Updated: 2024/04/18 19:10:06 by ouel-bou         ###   ########.fr       */
+/*   Updated: 2024/05/06 13:26:45 by ouel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 void	set_tarpos(t_stack **stack)
 {
@@ -41,7 +41,7 @@ void	set_tarpos(t_stack **stack)
 	}
 }
 
-void	push_chunks(t_stack **a, t_stack **b)
+void	push_range(t_stack **a, t_stack **b)
 {
 	int	p1;
 	int	p2;
@@ -54,17 +54,17 @@ void	push_chunks(t_stack **a, t_stack **b)
 	{
 		if (*b && (*b)->size > 1 && (*a)->tarpos < s - 3 && (*a)->tarpos <= p1)
 		{
-			pb(a, b, 0);
-			rb(b, 0);
+			pb(a, b);
+			rb(b);
 			p1++;
 		}
 		if ((*a)->tarpos < p1 + p2 && (*a)->tarpos < s - 3)
 		{
-			pb(a, b, 0);
+			pb(a, b);
 			p1++;
 		}
 		else
-			ra(a, 0); 
+			ra(a); 
 	}
 }
 
@@ -81,9 +81,9 @@ void	push_back(t_stack **a, t_stack **b)
 			revrot_push(a, b, a_bot);
 		while (b && *b && (*b)->tarpos == (*a)->tarpos - 1)
 		{
-			pa(a, b, 0);
+			pa(a, b);
 		}
 		while (bottom_a(a) == (*a)->tarpos - 1)
-			rra(a, 0);
+			rra(a);
 	}
 }

@@ -17,7 +17,7 @@ void	push_swap(t_stack **a, t_stack **b, int size)
 	set_tarpos(a);
 	if (size > 5)
 	{
-		push_chunks(a, b);
+		push_range(a, b);
 		sort_three(a);
 		push_back(a, b);
 	}
@@ -28,7 +28,7 @@ void	push_swap(t_stack **a, t_stack **b, int size)
 	else if (size == 3)
 		sort_three(a);
 	else if (size == 2)
-		sa(a, 0);
+		sa(a);
 	else if (size == 1)
 		exit (0);
 }
